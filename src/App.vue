@@ -16,10 +16,10 @@
 		data() {
 			return {
 				imgs: [
-					{src: '../static/images/dfd.jpg'},
-//					{src: '../static/images/dfd.jpg'},
-//					{src: '../static/images/dfd.jpg'},
-//					{src: '../static/images/dfd.jpg'}
+					{src: '../static/images/tuanzi.jpg'},
+					{src: '../static/images/tuanzi.jpg'},
+					{src: '../static/images/tuanzi.jpg'},
+					{src: '../static/images/tuanzi.jpg'}
 				]
 			}
 		},
@@ -63,8 +63,13 @@
 		color: red;
 	}
 
+	.el-carousel__item {
+		background: black;
+	}
+
 	.el-carousel__item img {
-		width: 100%;
+		height: 600px;
+		margin: 0 auto;
 	}
 
 
