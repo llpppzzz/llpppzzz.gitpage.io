@@ -1,37 +1,78 @@
 <template>
 	<div id="app">
-		<div class="carousel-box">
-			<el-carousel indicator-position="outside" height="600px">
-				<el-carousel-item v-for="(item, index) in imgs" :key="index">
-					<img :src="item.src" alt="">
-				</el-carousel-item>
-			</el-carousel>
+		<page-header></page-header>
+		<div class="page-container">
+			<router-view></router-view>
 		</div>
 	</div>
 </template>
 
 <script>
+	import header from './components/header.vue'
+
 	export default {
 		name: 'app',
 		data() {
 			return {
-				imgs: [
-					{src: '../static/images/tuanzi.jpg'},
-					{src: '../static/images/tuanzi.jpg'},
-					{src: '../static/images/tuanzi.jpg'},
-					{src: '../static/images/tuanzi.jpg'}
-				]
+				activeIndex: '1',
+
 			}
 		},
+		components: {
+			'page-header': header
+		},
 		methods: {
-			clickImg: function () {
-				console.log('ssss');
+			handleSelect(key, keyPath) {
+				console.log(key, keyPath);
 			}
-		}
+		},
 	}
 </script>
 
 <style>
+	html, body, div, span, applet, object, iframe,
+	h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+	a, abbr, acronym, address, big, cite, code,
+	del, dfn, em, img, ins, kbd, q, s, samp,
+	small, strike, strong, sub, sup, tt, var,
+	b, u, i, center,
+	dl, dt, dd, ol, ul, li,
+	fieldset, form, label, legend,
+	table, caption, tbody, tfoot, thead, tr, th, td,
+	article, aside, canvas, details, embed,
+	figure, figcaption, footer, header, hgroup,
+	menu, nav, output, ruby, section, summary,
+	time, mark, audio, video {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+	/* HTML5 display-role reset for older browsers */
+	article, aside, details, figcaption, figure,
+	footer, header, hgroup, menu, nav, section {
+		display: block;
+	}
+	body {
+		line-height: 1;
+	}
+	ol, ul {
+		list-style: none;
+	}
+	blockquote, q {
+		quotes: none;
+	}
+	blockquote:before, blockquote:after,
+	q:before, q:after {
+		content: '';
+		content: none;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
 	#app {
 		font-family: 'Avenir', Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;
@@ -57,19 +98,6 @@
 
 	a {
 		color: #42b983;
-	}
-
-	.red {
-		color: red;
-	}
-
-	.el-carousel__item {
-		background: black;
-	}
-
-	.el-carousel__item img {
-		height: 600px;
-		margin: 0 auto;
 	}
 
 
