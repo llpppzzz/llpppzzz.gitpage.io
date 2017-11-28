@@ -1,12 +1,9 @@
 <template>
 	<header class="header">
 		<div class="header-container">
-			<h1></h1>
+			<router-link class="h1" to="/"></router-link>
 			<nav>
-				<router-link class="el-button" to="/tuanzi">
-					团子
-				</router-link>
-				<!--<el-button v-link="/tuanzi">团子</el-button>-->
+				<router-link class="el-button" to="/tuanzi">团子</router-link>
 			</nav>
 		</div>
 	</header>
@@ -50,7 +47,9 @@
 		margin: 0 auto;
 		padding: 0;
 	}
-	.header-container h1{
+	.header-container .h1{
+		display: block;
+		cursor: pointer;
 		float: left;
 		height: 80px;
 		width: 200px;
@@ -59,7 +58,6 @@
 	.header-container nav{
 		float: right;
 		height: 80px;
-		/*width: 600px;*/
 	}
 	.header-container nav .el-menu{
 		margin-top: 19px;
