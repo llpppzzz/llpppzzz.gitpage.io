@@ -2,7 +2,9 @@
 	<div class="home-container">
 		<ul>
 			<li v-for="(item, index) in list" :key="index">
-				<router-link href="" :to="{name: 'listDetails', params: item}">{{item.id}}</router-link>
+				<router-link href="" :to="{name: 'listDetails', params: item}">
+					<span>{{item.id}}</span>
+				</router-link>
 			</li>
 		</ul>
 	</div>

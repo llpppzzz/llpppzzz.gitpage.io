@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ElementUI from 'element-ui'
+import $ from 'jquery'
 import 'element-ui/lib/theme-chalk/index.css'
+import './lib/animate.css'
 
 import App from './App.vue'
 
-Vue.use(VueRouter)
-Vue.use(ElementUI)
+Vue.use(VueRouter);
+Vue.use(ElementUI);
+// Vue.use($);
 
 //引入路由配置文件
 import routes from './config/routes'

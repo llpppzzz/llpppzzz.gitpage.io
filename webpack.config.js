@@ -50,7 +50,19 @@ module.exports = {
 	performance: {
 		hints: false
 	},
-	devtool: '#eval-source-map'
+	devtool: '#eval-source-map',
+	plugins: [
+		// new webpack.optimize.CommonsChunkPlugin('common.js'),
+		new webpack.ProvidePlugin({
+			jQuery: "jquery",
+			$: "jquery"
+		}),
+		// new webpack.optimize.UglifyJsPlugin({
+		// 	compress: {
+		// 		warnings: false
+		// 	}
+		// })
+	]
 }
 
 if (process.env.NODE_ENV === 'production') {

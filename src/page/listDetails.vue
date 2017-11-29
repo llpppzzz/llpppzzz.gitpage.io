@@ -1,6 +1,6 @@
 <template>
-	<div class="home-container">
-		列表id: {{id}}
+	<div class="list-details-container">
+		列表id: {{params.id}}
 	</div>
 </template>
 
@@ -8,11 +8,11 @@
 	export default {
 		data() {
 			return {
-				id: this.$route.params.id
+				params: this.$route.params
 			}
 		},
 		mounted: function () {
-			console.log('id: ' + this.$route.params.id);
+			console.log(this.$route.params);
 		},
 		methods: {
 
