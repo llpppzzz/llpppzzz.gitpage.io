@@ -2,11 +2,12 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+	devtool: 'eval-source-map',
 	entry: './src/main.js',
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		publicPath: '/dist/',
-		filename: 'build.js'
+		filename: 'build.js',
 	},
 	module: {
 		rules: [
@@ -50,23 +51,18 @@ module.exports = {
 	performance: {
 		hints: false
 	},
-	devtool: '#eval-source-map',
 	plugins: [
 		// new webpack.optimize.CommonsChunkPlugin('common.js'),
 		new webpack.ProvidePlugin({
 			jQuery: "jquery",
 			$: "jquery"
 		}),
-		// new webpack.optimize.UglifyJsPlugin({
-		// 	compress: {
-		// 		warnings: false
-		// 	}
-		// })
+
 	]
 }
 
 if (process.env.NODE_ENV === 'production') {
-	module.exports.devtool = '#source-map'
+	module.exports.devtool = 'source-map'
 	// http://vue-loader.vuejs.org/en/workflow/production.html
 	module.exports.plugins = (module.exports.plugins || []).concat([
 		new webpack.DefinePlugin({
@@ -75,7 +71,7 @@ if (process.env.NODE_ENV === 'production') {
 			}
 		}),
 		new webpack.optimize.UglifyJsPlugin({
-			sourceMap: true,
+			sourceMap: false,
 			compress: {
 				warnings: false
 			}
