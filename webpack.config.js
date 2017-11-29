@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
 	devtool: 'eval-source-map',
@@ -24,9 +24,13 @@ module.exports = {
 				loader: 'babel-loader',
 				exclude: /node_modules/
 			},
-			{ 
-				test: /\.css$/, 
-				loader: 'style-loader!css-loader' 
+			{
+				test: /\.css$/,
+				loader: 'style-loader!css-loader'
+			},
+			{
+				test: /\.less/,
+				loaders: ['style-loader', 'css-loader', 'autoprefixer', 'less-loader'],
 			},
 			{
 				test: /\.(png|jpg|gif|svg)$/,
@@ -53,16 +57,16 @@ module.exports = {
 	},
 	plugins: [
 		// new webpack.optimize.CommonsChunkPlugin('common.js'),
-		new webpack.ProvidePlugin({
-			jQuery: "jquery",
-			$: "jquery"
-		}),
+		// new webpack.ProvidePlugin({
+		// 	jQuery: "jquery",
+		// 	$: "jquery"
+		// }),
 
 	]
-}
+};
 
 if (process.env.NODE_ENV === 'production') {
-	module.exports.devtool = 'source-map'
+	module.exports.devtool = 'source-map';
 	// http://vue-loader.vuejs.org/en/workflow/production.html
 	module.exports.plugins = (module.exports.plugins || []).concat([
 		new webpack.DefinePlugin({
@@ -78,6 +82,7 @@ if (process.env.NODE_ENV === 'production') {
 		}),
 		new webpack.LoaderOptionsPlugin({
 			minimize: true
-		})
+		}),
+		new webpack.optimize.OccurrenceOrderPlugin(),
 	])
 }
