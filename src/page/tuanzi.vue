@@ -106,7 +106,8 @@
 			}
 		},
 		mounted() {
-			$(window).off('scroll').on('scroll', this.showPhoto);
+			window.removeEventListener('scroll', this.showPhoto);
+			window.addEventListener('scroll', this.showPhoto);
 		},
 		methods: {
 			showPhoto() {
@@ -120,72 +121,63 @@
 	}
 </script>
 
-<style>
+<style lang="less">
 	.tuanzi-container {
-		/*width: 100%;*/
 		margin: 0 auto;
 		padding: 0 80px;
 		overflow: hidden;
-	}
 
-	.tuanzi-container .carousel-box {
-		width: 100%;
-		/*height: 1000px;*/
-		/*overflow: hidden;*/
-	}
-
-	.tuanzi-container .carousel-box .item-box {
-		width: 100%;
-		height: 500px;
-	}
-
-	.tuanzi-container .carousel-box .item-box img {
-		height: 520px;
-		float: left;
-	}
-
-	.tuanzi-container .carousel-box .item-box .grey {
-		height: 220px;
-		width: 220px;
-		background: grey;
-		float: left;
-	}
-
-	.tuanzi-container .el-aside .step-box {
-		padding: 20px;
-	}
-
-	.tuanzi-container .el-aside .step-box li {
-		height: 500px;
-		width: 100%;
-		text-align: left;
-		text-indent: 30px;
-		line-height: 18px;
-		position: relative;
-	}
-
-	.tuanzi-container .el-aside .step-box li span.date {
-		color: #999;
-		line-height: 18px;
-	}
-
-	.tuanzi-container .el-aside .step-box li span.describe {
-		display: block;
-		color: #333;
-		line-height: 24px;
-		margin-top: 10px;
-	}
-
-	.tuanzi-container .el-aside .step-box li:before {
-		content: ' ';
-		display: block;
-		height: 10px;
-		width: 10px;
-		border-radius: 50%;
-		border: 3px solid #409EFF;
-		position: absolute;
-		left: 5px;
-		top: 0;
+		.carousel-box {
+			width: 100%;
+			.item-box {
+				width: 100%;
+				height: 500px;
+				img {
+					height: 520px;
+					float: left;
+				}
+				.grey {
+					height: 220px;
+					width: 220px;
+					background: grey;
+					float: left;
+				}
+			}
+		}
+		.el-aside {
+			.step-box {
+				padding: 20px;
+				li {
+					height: 500px;
+					width: 100%;
+					text-align: left;
+					text-indent: 30px;
+					line-height: 18px;
+					position: relative;
+					&:before {
+						content: ' ';
+						display: block;
+						height: 10px;
+						width: 10px;
+						border-radius: 50%;
+						border: 3px solid #409EFF;
+						position: absolute;
+						left: 5px;
+						top: 0;
+					}
+					span.date {
+						color: #999;
+						line-height: 18px;
+					}
+					span.describe {
+						display: block;
+						color: #333;
+						line-height: 24px;
+						margin-top: 10px;
+					}
+				}
+			}
+		}
 	}
 
 </style>

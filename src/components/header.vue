@@ -44,7 +44,8 @@
 	}
 </script>
 
-<style>
+<style lang="less">
+
 	.header-container {
 		height: 100px;
 		background-color: #fff;
@@ -55,34 +56,30 @@
 		line-height: 80px;
 		z-index: 100;
 		position: relative;
+		.header {
+			/*width: 1140px;*/
+			height: 80px;
+			padding: 0 80px;
+			.h1 {
+				display: block;
+				cursor: pointer;
+				float: left;
+				height: 80px;
+				width: 200px;
+				background: url("../../static/images/logo.png") no-repeat;
+			}
+			nav {
+				float: right;
+				height: 80px;
+				.el-menu--horizontal {
+					border-bottom: none;
+				}
+			}
+			nav > .el-menu {
+				margin-top: 12px;
+			}
+		}
 	}
 
-	.header {
-		/*width: 1140px;*/
-		height: 80px;
-		padding: 0 80px;
-	}
-
-	.header-container .h1 {
-		display: block;
-		cursor: pointer;
-		float: left;
-		height: 80px;
-		width: 200px;
-		background: url("../../static/images/logo.png") no-repeat;
-	}
-
-	.header-container nav {
-		float: right;
-		height: 80px;
-	}
-
-	.header-container nav > .el-menu {
-		margin-top: 12px;
-	}
-
-	.header-container nav .el-menu--horizontal {
-		border-bottom: none;
-	}
 
 </style>
