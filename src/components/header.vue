@@ -5,18 +5,15 @@
 			<router-link to="/"><h1 class="h1"></h1></router-link>
 
 			<nav>
-				<!--<router-link to="/tuanzi">-->
-				<!--<el-button type="primary">团子</el-button>-->
-				<!--</router-link>-->
 				<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="" :router="true">
 					<el-menu-item index="/tuanzi">团子</el-menu-item>
-					<!--<el-submenu index="2">-->
-					<!--<template slot="title">我的工作台</template>-->
-					<!--<el-menu-item index="2-1">选项1</el-menu-item>-->
-					<!--<el-menu-item index="2-2">选项2</el-menu-item>-->
-					<!--<el-menu-item index="2-3">选项3</el-menu-item>-->
-					<!--</el-submenu>-->
-					<el-menu-item index="3">订单管理</el-menu-item>
+
+					<el-submenu index="2">
+						<template slot="title">demo</template>
+						<el-menu-item index="/vueRouter">vue-router</el-menu-item>
+						<el-menu-item index="2-2">选项2</el-menu-item>
+						<el-menu-item index="2-3">选项3</el-menu-item>
+					</el-submenu>
 				</el-menu>
 			</nav>
 		</header>
@@ -73,6 +70,11 @@
 				height: 80px;
 				.el-menu--horizontal {
 					border-bottom: none;
+					.el-menu-item {
+						width: 80px;
+						float: left;
+						text-align: left;
+					}
 				}
 			}
 			nav > .el-menu {
