@@ -16,6 +16,11 @@
 		},
 		methods: {
 
+		},
+		watch: {
+			'$route': function (to, from) {
+				this.params = to.params
+			}
 		}
 	}
 </script>
