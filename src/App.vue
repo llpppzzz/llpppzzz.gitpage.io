@@ -14,7 +14,6 @@
 		name: 'app',
 		data() {
 			return {
-				activeIndex: '1',
 
 			}
 		},
@@ -22,9 +21,7 @@
 			'page-header': header
 		},
 		methods: {
-			handleSelect(key, keyPath) {
-				console.log(key, keyPath);
-			}
+
 		},
 	}
 </script>
