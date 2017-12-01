@@ -1,6 +1,6 @@
 <template>
 	<div class="list-details-container">
-		列表id: {{params.id}}
+		列表id: {{params.id | booleanFilter}}
 	</div>
 </template>
 
