@@ -1,10 +1,12 @@
 <template>
 	<div class="list-details-container">
-		列表id: {{params.id | booleanFilter}}
+		列表id: {{params.id}}
 	</div>
 </template>
 
 <script>
+	import utils from '../../common/utils.js'
+
 	export default {
 		data() {
 			return {
@@ -12,7 +14,13 @@
 			}
 		},
 		mounted: function () {
-			console.log(this.$route.params);
+			this.params = this.$route.params;
+			let ddd = {
+				a:2,
+				b:3,
+				c:4
+			};
+			console.log(utils.param(ddd));
 		},
 		methods: {
 
