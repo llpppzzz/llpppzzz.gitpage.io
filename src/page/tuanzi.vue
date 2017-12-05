@@ -11,9 +11,9 @@
 			</el-aside>
 			<el-main>
 				<div class="carousel-box">
-					<div class="item-box" v-for="item in imgs">
+					<div class="item-box" v-for="(item,index) in imgs">
 						<!--<img :src="imgs[0].src" class="animated fadeInRightBig">-->
-						<div v-show="item.showEle" class="grey animated fadeInRightBig"></div>
+						<div v-show="showEle[index]" class="grey animated fadeInRightBig"></div>
 					</div>
 				</div>
 			</el-main>
@@ -22,7 +22,9 @@
 </template>
 
 <script>
-	export default {
+    import browser from '../common/browser.js'
+
+    export default {
 		data() {
 			return {
 				aa: false,
@@ -53,6 +55,7 @@
 						describe: '团子来啦！'
 					},
 				],
+                showEle: [true, false, false, false, false, false],
 				imgs: [
 					{
 						showEle: true,
@@ -111,11 +114,17 @@
 		},
 		methods: {
 			showPhoto() {
-				this.scroll = document.documentElement.scrollTop;
-				let index = parseInt((this.scroll+499)/500);
+			    let isMobile = browser.isMobile, index;
+                this.scroll = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
 
-				this.imgs[index].showEle = true;
-				this.imgs.splice(index, 1, this.imgs[index]);
+                if(isMobile){
+                    index = Number.parseInt((this.scroll+1300)/500);
+                    this.showEle.splice(index, 1, true);
+                    this.showEle.splice(index, 2, true);
+				}else{
+                    index = Number.parseInt((this.scroll+499)/500);
+				}
+                this.showEle.splice(index, 1, true);
 			}
 		}
 	}
