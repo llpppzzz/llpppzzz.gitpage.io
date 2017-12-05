@@ -22,7 +22,8 @@
 </template>
 
 <script>
-    import browser from '../common/browser.js'
+    import browser from '../common/browser.js';
+    let isMobile = browser.isMobile;
 
     export default {
 		data() {
@@ -111,16 +112,19 @@
 		mounted() {
 			window.removeEventListener('scroll', this.showPhoto);
 			window.addEventListener('scroll', this.showPhoto);
+
+            isMobile = true;
+            if(isMobile){
+                this.showEle = [true, true, true, false, false, false];
+			}
 		},
 		methods: {
 			showPhoto() {
-			    let isMobile = browser.isMobile, index;
+			    let index = 0;
                 this.scroll = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
 
                 if(isMobile){
                     index = Number.parseInt((this.scroll+1300)/500);
-                    this.showEle.splice(index, 1, true);
-                    this.showEle.splice(index, 2, true);
 				}else{
                     index = Number.parseInt((this.scroll+499)/500);
 				}
