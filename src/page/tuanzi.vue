@@ -113,7 +113,7 @@
 			window.removeEventListener('scroll', this.showPhoto);
 			window.addEventListener('scroll', this.showPhoto);
 
-            isMobile = true;
+            // isMobile = true;
             if(isMobile){
                 this.showEle = [true, true, true, false, false, false];
 			}
