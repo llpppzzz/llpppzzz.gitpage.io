@@ -23,13 +23,13 @@ if (appName == "Microsoft Internet Explorer" || isIE) {
  * 浏览器环境判断模块
  */
 export default {
-	isChrome: isChrome,		//  是否Chrome浏览器
-	isIE: isIE, 								//是否IE浏览器
-	isMobile: isMobile,			//是否移动端
-	IEVersion: IEVersion,
-	isIE8: isIE8,
-	isIE9: isIE9,
-	isIE10: isIE10,
-	isIE11: isIE11
+	isChrome,		//是否Chrome浏览器
+	isIE, 			//是否IE浏览器
+	isMobile,		//是否移动端
+	IEVersion,
+	isIE8,
+	isIE9,
+	isIE10,
+	isIE11
 };
 
