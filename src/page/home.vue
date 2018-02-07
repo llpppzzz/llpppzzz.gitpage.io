@@ -1,20 +1,58 @@
 <template>
-	<div class="home-container">
-		home
-	</div>
+  <div class="home-container">
+    <el-autocomplete
+      v-model="state4"
+      :fetch-suggestions="querySearchAsync"
+      placeholder="请输入内容"
+      @select="handleSelect"
+    ></el-autocomplete>
+  </div>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
+  export default {
+    data () {
+      return {
+        restaurants: [],
+        state4: '',
+        timeout: null
+      }
+    },
+    methods: {
+      loadAll () {
+        return [
+          {"polcode": "0000000047", "entname": "廊坊市生产力科技发展有限公司"}, {
+            "polcode": "0000000048",
+            "entname": "河北裂变客科技成果孵化器有限公司"
+          }, {"polcode": "0000000001", "entname": "北华航天工业学院技术转移中心"}, {
+            "polcode": "0000000005",
+            "entname": "智多星机械设计工作室"
+          }, {"polcode": "0000000002", "entname": "河北省航天遥感信息处理与应用协同创新中心"}, {
+            "polcode": "0000000006",
+            "entname": "河北清华发展研究院"
+          }, {"polcode": "0000000007", "entname": "廊坊市产品质量监督检验所"},
+        ]
+      },
+      querySearchAsync (queryString, cb) {
+        var restaurants = this.restaurants
+        var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants
 
-			}
-		},
-		methods: {
-
-		}
-	}
+        results = results.map(data => ({value: `${data.entname}(${data.polcode})`}))
+        cb(results)
+      },
+      createStateFilter (queryString) {
+        return (state) => {
+          return (state.polcode.includes(queryString) || state.entname.includes(queryString))
+        }
+      },
+      handleSelect (item) {
+        console.log(item)
+      }
+    },
+    mounted () {
+      this.restaurants = this.loadAll()
+    }
+  }
 </script>
 
 <style lang="less">

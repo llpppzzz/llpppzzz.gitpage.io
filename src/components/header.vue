@@ -1,87 +1,87 @@
 <template>
-	<div class="header-container">
-		<header class="header">
+  <div class="header-container">
+    <header class="header">
 
-			<router-link to="/"><h1 class="h1"></h1></router-link>
+      <router-link to="/"><h1 class="h1"></h1></router-link>
 
-			<nav>
-				<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="" :router="true">
-					<el-menu-item index="/tuanzi">团子</el-menu-item>
+      <nav>
+        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="" :router="true">
+          <el-menu-item index="/tuanzi">团子</el-menu-item>
 
-					<el-submenu index="2">
-						<template slot="title">demo</template>
-						<el-menu-item index="/vueRouter">vue-router</el-menu-item>
-						<el-menu-item index="2-2">选项2</el-menu-item>
-						<el-menu-item index="2-3">选项3</el-menu-item>
-					</el-submenu>
-				</el-menu>
-			</nav>
-		</header>
-	</div>
+          <el-submenu index="2">
+            <template slot="title">demo</template>
+            <el-menu-item index="/vueRouter">vue-router</el-menu-item>
+            <el-menu-item index="/vuexTest">vuex-test</el-menu-item>
+            <el-menu-item index="2-3">选项3</el-menu-item>
+          </el-submenu>
+        </el-menu>
+      </nav>
+    </header>
+  </div>
 </template>
 
 <script>
-	export default {
-		data() {
-			return {
-				activeIndex: '',
-				imgs: [
-					{src: '../../static/images/tuanzi.jpg'},
-					{src: '../../static/images/tuanzi.jpg'},
-					{src: '../../static/images/tuanzi.jpg'},
-					{src: '../../static/images/tuanzi.jpg'}
-				]
-			}
-		},
-		methods: {
-			handleSelect(key, keyPath) {
-				console.log(key, keyPath);
-			}
-		}
-	}
+  export default {
+    data () {
+      return {
+        activeIndex: '',
+        imgs: [
+          {src: '../../static/images/tuanzi.jpg'},
+          {src: '../../static/images/tuanzi.jpg'},
+          {src: '../../static/images/tuanzi.jpg'},
+          {src: '../../static/images/tuanzi.jpg'}
+        ]
+      }
+    },
+    methods: {
+      handleSelect (key, keyPath) {
+        console.log(key, keyPath)
+      }
+    }
+  }
 </script>
 
 <style lang="less">
 
-	.header-container {
-		height: 100px;
-		background-color: #fff;
-		color: #fff;
-		top: 0;
-		left: 0;
-		width: 100%;
-		line-height: 80px;
-		z-index: 100;
-		position: relative;
-		.header {
-			/*width: 1140px;*/
-			height: 80px;
-			padding: 0 80px;
-			.h1 {
-				display: block;
-				cursor: pointer;
-				float: left;
-				height: 80px;
-				width: 200px;
-				background: url("../../static/images/logo.png") no-repeat;
-			}
-			nav {
-				float: right;
-				height: 80px;
-				.el-menu--horizontal {
-					border-bottom: none;
-					.el-menu-item {
-						width: 80px;
-						float: left;
-						text-align: left;
-					}
-				}
-			}
-			nav > .el-menu {
-				margin-top: 12px;
-			}
-		}
-	}
+  .header-container {
+    height: 100px;
+    background-color: #fff;
+    color: #fff;
+    top: 0;
+    left: 0;
+    width: 100%;
+    line-height: 80px;
+    z-index: 100;
+    position: relative;
+    .header {
+      /*width: 1140px;*/
+      height: 80px;
+      padding: 0 80px;
+      .h1 {
+        display: block;
+        cursor: pointer;
+        float: left;
+        height: 80px;
+        width: 200px;
+        background: url("../../static/images/logo.png") no-repeat;
+      }
+      nav {
+        float: right;
+        height: 80px;
+        .el-menu--horizontal {
+          border-bottom: none;
+          .el-menu-item {
+            width: 80px;
+            float: left;
+            text-align: left;
+          }
+        }
+      }
+      nav > .el-menu {
+        margin-top: 12px;
+      }
+    }
+  }
 
 
 </style>
