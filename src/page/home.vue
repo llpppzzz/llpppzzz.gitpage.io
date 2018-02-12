@@ -11,12 +11,16 @@
 
 <script>
   export default {
+    name: 'home-container',
     data () {
       return {
         restaurants: [],
         state4: '',
         timeout: null
       }
+    },
+    mounted () {
+      this.restaurants = this.loadAll()
     },
     methods: {
       loadAll () {
@@ -34,8 +38,8 @@
         ]
       },
       querySearchAsync (queryString, cb) {
-        var restaurants = this.restaurants
-        var results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants
+        let restaurants = this.restaurants
+        let results = queryString ? restaurants.filter(this.createStateFilter(queryString)) : restaurants
 
         results = results.map(data => ({value: `${data.entname}(${data.polcode})`}))
         cb(results)
@@ -48,9 +52,6 @@
       handleSelect (item) {
         console.log(item)
       }
-    },
-    mounted () {
-      this.restaurants = this.loadAll()
     }
   }
 </script>

@@ -35,6 +35,7 @@
   let isMobile = browser.isMobile
 
   export default {
+    name: 'tuanzi-container',
     data () {
       return {
         aa: false,

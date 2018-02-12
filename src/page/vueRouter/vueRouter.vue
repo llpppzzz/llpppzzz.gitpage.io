@@ -22,6 +22,7 @@
 
 <script>
   export default {
+    name: 'vue-router-container',
     data () {
       return {
         list: [

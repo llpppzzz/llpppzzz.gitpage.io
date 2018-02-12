@@ -5,10 +5,11 @@
 </template>
 
 <script>
-  import utils from '../../common/utils.js'
+  import utils from 'common/utils.js'
 
   export default {
-    data() {
+    name: 'list-details-container',
+    data () {
       return {
         params: this.$route.params
       }
@@ -22,16 +23,18 @@
       }
       console.log(utils.param(ddd))
     },
-    methods: {},
+    computed: {
+    },
     watch: {
       '$route': function (to, from) {
         this.params = to.params
       }
-    }
+    },
+    methods: {}
   }
 </script>
 
-<style>
+<style lang="less">
 
 
 </style>
