@@ -1,22 +1,14 @@
 <template>
   <div id="app">
-    <page-header></page-header>
-    <div class="page-container">
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import header from './components/header.vue'
-
   export default {
     name: 'app',
     data () {
       return {}
-    },
-    components: {
-      'page-header': header
     },
     methods: {}
   }
@@ -24,11 +16,6 @@
 
 <style lang="less">
   @import "style/index";
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
 
   a {
     color: #42b983;

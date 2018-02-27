@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import browser from '../common/browser.js'
+  import browser from 'common/browser.js'
 
   let isMobile = browser.isMobile
 

@@ -4,18 +4,18 @@
 
       <router-link to="/"><h1 class="h1"></h1></router-link>
 
-      <nav>
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="" :router="true">
-          <el-menu-item index="/tuanzi">团子</el-menu-item>
+      <!--<nav>-->
+        <!--<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="" :router="true">-->
+          <!--<el-menu-item index="/tuanzi">团子</el-menu-item>-->
 
-          <el-submenu index="2">
-            <template slot="title">demo</template>
-            <el-menu-item index="/vueRouter">vue-router</el-menu-item>
-            <el-menu-item index="/vuexTest">vuex-test</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
-          </el-submenu>
-        </el-menu>
-      </nav>
+          <!--<el-submenu index="2">-->
+            <!--<template slot="title">demo</template>-->
+            <!--<el-menu-item index="/vueRouter">vue-router</el-menu-item>-->
+            <!--<el-menu-item index="/vuexTest">vuex-test</el-menu-item>-->
+            <!--<el-menu-item index="2-3">选项3</el-menu-item>-->
+          <!--</el-submenu>-->
+        <!--</el-menu>-->
+      <!--</nav>-->
     </header>
   </div>
 </template>
@@ -25,12 +25,7 @@
     data () {
       return {
         activeIndex: '',
-        imgs: [
-          {src: '../../static/images/tuanzi.jpg'},
-          {src: '../../static/images/tuanzi.jpg'},
-          {src: '../../static/images/tuanzi.jpg'},
-          {src: '../../static/images/tuanzi.jpg'}
-        ]
+        imgs: []
       }
     },
     methods: {
@@ -63,7 +58,7 @@
         float: left;
         height: 80px;
         width: 200px;
-        background: url("../../static/images/logo.png") no-repeat;
+        background: url("~images/logo.png") no-repeat;
       }
       nav {
         float: right;
