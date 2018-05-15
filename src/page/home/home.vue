@@ -6,12 +6,17 @@
       placeholder="请输入内容"
       @select="handleSelect"
     ></el-autocomplete>
+    <div class="colorful">
+      <span>彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色</span>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
     name: 'home-container',
+    components: {
+    },
     data () {
       return {
         restaurants: [],
@@ -34,7 +39,7 @@
           }, {'polcode': '0000000002', 'entname': '河北省航天遥感信息处理与应用协同创新中心'}, {
             'polcode': '0000000006',
             'entname': '河北清华发展研究院'
-          }, {'polcode': '0000000007', 'entname': '廊坊市产品质量监督检验所'},
+          }, {'polcode': '0000000007', 'entname': '廊坊市产品质量监督检验所'}
         ]
       },
       querySearchAsync (queryString, cb) {
@@ -57,6 +62,18 @@
 </script>
 
 <style lang="less">
-
+  .home-container {
+    @keyframes bgp {
+      0% {background-position: 0 0}
+      100% {background-position: -100% 0}
+    }
+    .colorful {
+      background-image: linear-gradient(to right, red, orange, yellow, green, yellow, orange, red, orange, yellow, green, yellow, orange, red);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-size: 200% 100%;
+      animation: bgp 5s infinite linear;
+    }
+  }
 
 </style>

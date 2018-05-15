@@ -13,6 +13,7 @@
   "dependencies": {
     "element-ui": "^2.0.7",
     "vue": "^2.5.2",
+    "vue-distpicker": "^1.0.5",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },

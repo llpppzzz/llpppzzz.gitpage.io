@@ -1,6 +1,7 @@
 // 加载模板文件
 import main from 'page/main.vue'
-import tuanzi from 'page/tuanzi.vue'
+import test from 'page/test/test.vue'
+import tuanzi from 'page/tuanzi/tuanzi.vue'
 import home from 'page/home/home.vue'
 import vueTest from 'page/function/vuexTest.vue'
 
@@ -41,12 +42,25 @@ export default [
     path: '/tuanzi',
     title: '团子',
     component: main,
-    redirect: '/tuanzi/tuanziPicture',
+    redirect: '/tuanzi/tuanzi',
     children: [
       {
-        path: 'tuanziPicture',
+        path: 'tuanzi',
         name: 'tuanzi',
         component: tuanzi
+      }
+    ]
+  },
+  {
+    path: '/test',
+    title: '测试',
+    component: main,
+    redirect: '/test/test',
+    children: [
+      {
+        path: 'test',
+        name: 'test',
+        component: test
       }
     ]
   }

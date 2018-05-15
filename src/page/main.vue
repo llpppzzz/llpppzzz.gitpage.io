@@ -8,7 +8,7 @@
         <el-aside width="200px">
           <side-bar></side-bar>
         </el-aside>
-        <el-container>
+        <el-container class="main-container">
           <router-view></router-view>
         </el-container>
       </el-container>
@@ -45,7 +45,9 @@
 
 <style lang="less">
   .main {
-
+    .main-container {
+      padding: 24px 0 0 24px
+    }
   }
 
 </style>

@@ -11,7 +11,6 @@
       </el-aside>
       <el-main>
         <div class="carousel-box">
-          <el-input v-model="pageStatus"></el-input>
           <div class="item-box" v-for="(item,index) in imgs" v-show="showEle[index]">
             <div class="pull-left animated fadeInLeftBig">
               <!--<img :src="item.src1">-->
@@ -152,7 +151,6 @@
 <style lang="less">
   .tuanzi-container {
     margin: 0 auto;
-    padding: 0 80px;
     overflow: hidden;
 
     .carousel-box {
