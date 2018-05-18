@@ -6,7 +6,8 @@ import router from './router'
 import store from './store'
 import elementUI from 'element-ui'
 import initFilters from './filters'
-import 'element-ui/lib/theme-chalk/index.css'
+// import 'element-ui/lib/theme-chalk/index.css'
+import './element/theme/index.scss'
 import './lib/animate.css'
 
 Vue.use(elementUI)

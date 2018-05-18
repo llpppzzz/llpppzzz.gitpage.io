@@ -5,10 +5,11 @@
     </div>
     <div class="body-box">
       <el-checkbox-group v-model="checkedGroup" @change="checkChange">
-        <el-checkbox v-for="item in cardList" :label="item.code"></el-checkbox>
+        <el-checkbox v-for="item in cardList" :key="item.code" :label="item.code"></el-checkbox>
       </el-checkbox-group>
       <el-button @click="save()">保存</el-button>
     </div>
+    <el-button>开始</el-button>
   </div>
 </template>
 

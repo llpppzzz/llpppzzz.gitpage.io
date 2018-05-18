@@ -5,7 +5,7 @@
       class="el-menu-vertical-demo"
       :router="true">
       <el-menu-item index="/">
-        <i class="el-icon-tickets"></i>
+        <i class="el-icon-home"></i>
         <span slot="title">首页</span>
       </el-menu-item>
       <el-submenu index="2">
