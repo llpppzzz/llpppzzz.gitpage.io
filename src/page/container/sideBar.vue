@@ -18,10 +18,18 @@
         <el-menu-item index="1-2">选项2</el-menu-item>
         <el-menu-item index="1-2">选项2</el-menu-item>
       </el-submenu>
-      <el-menu-item index="/test">
-        <i class="el-icon-share"></i>
-        <span slot="title">测试</span>
-      </el-menu-item>
+      <el-submenu index="3">
+        <template slot="title">
+          <i class="el-icon-share"></i>
+          <span>测试</span>
+        </template>
+        <el-menu-item index="/test">
+          <span slot="title">功能测试</span>
+        </el-menu-item>
+        <el-menu-item index="/test/wmTest">
+          <span slot="title">财富测试</span>
+        </el-menu-item>
+      </el-submenu>
     </el-menu>
   </div>
 </template>

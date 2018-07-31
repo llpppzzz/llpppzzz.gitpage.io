@@ -4,6 +4,7 @@ import test from 'page/test/test.vue'
 import tuanzi from 'page/tuanzi/tuanzi.vue'
 import home from 'page/home/home.vue'
 import vueTest from 'page/function/vuexTest.vue'
+import wmTest from 'page/wmTest/userInfo.vue'
 
 export default [
   {
@@ -42,10 +43,10 @@ export default [
     path: '/tuanzi',
     title: '团子',
     component: main,
-    redirect: '/tuanzi/tuanzi',
+    redirect: '/tuanzi/index',
     children: [
       {
-        path: 'tuanzi',
+        path: 'index',
         name: 'tuanzi',
         component: tuanzi
       }
@@ -55,12 +56,17 @@ export default [
     path: '/test',
     title: '测试',
     component: main,
-    redirect: '/test/test',
+    redirect: '/test/index',
     children: [
       {
-        path: 'test',
+        path: 'index',
         name: 'test',
         component: test
+      },
+      {
+        path: 'wmTest',
+        name: 'wmTest',
+        component: wmTest
       }
     ]
   }

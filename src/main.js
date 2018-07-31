@@ -6,6 +6,8 @@ import router from './router'
 import store from './store'
 import elementUI from 'element-ui'
 import initFilters from './filters'
+import initDirectives from './directives'
+import initComponents from './components'
 // import 'element-ui/lib/theme-chalk/index.css'
 import './element/theme/index.scss'
 import './lib/animate.css'
@@ -13,6 +15,8 @@ import './lib/animate.css'
 Vue.use(elementUI)
 Vue.config.productionTip = false
 initFilters()
+initDirectives()
+initComponents()
 
 /* eslint-disable no-new */
 new Vue({
