@@ -17,6 +17,10 @@
 <style lang="less">
   @import "style/index";
 
+  #app {
+    height: 100%
+  }
+
   a {
     color: #42b983;
   }

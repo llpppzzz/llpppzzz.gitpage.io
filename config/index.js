@@ -14,9 +14,16 @@ module.exports = {
     proxyTable: server.proxyServer,
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
+    // 可被 process.env.HOST 覆盖
+    // 配置成 0.0.0.0，则服务器外部可访问
+    host: '0.0.0.0',
+
+    // 是否本地配置 host 调试
+    // domain: 'testlocal.gf.com.cn',
+
+    // 可被 process.env.PORT 覆盖，如果默认端口被占用，会自动分配新的端口
+    port: 4000,
+    autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-

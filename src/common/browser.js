@@ -1,3 +1,4 @@
+/* eslint disabled */
 var ua = window.navigator.userAgent;
 var isIE = ("ActiveXObject" in window);
 var isChrome = ua.match(/Chrome/i);
@@ -23,13 +24,12 @@ if (appName == "Microsoft Internet Explorer" || isIE) {
  * 浏览器环境判断模块
  */
 export default {
-	isChrome,		//是否Chrome浏览器
-	isIE, 			//是否IE浏览器
-	isMobile,		//是否移动端
-	IEVersion,
-	isIE8,
-	isIE9,
-	isIE10,
-	isIE11
-};
-
+  isChrome, // 是否Chrome浏览器
+  isIE, // 是否IE浏览器
+  isMobile, // 是否移动端
+  IEVersion,
+  isIE8,
+  isIE9,
+  isIE10,
+  isIE11
+}

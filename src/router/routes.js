@@ -1,5 +1,6 @@
 // 加载模板文件
 import main from 'page/main.vue'
+import login from 'page/login'
 import test from 'page/test/test.vue'
 import tuanzi from 'page/tuanzi/tuanzi.vue'
 import home from 'page/home/home.vue'
@@ -12,6 +13,15 @@ export default [
     title: '首页',
     component: main,
     redirect: '/home/index'
+  },
+  {
+    path: '/login',
+    name: 'login',
+    title: '登录',
+    // meta: {
+    //   auth: false
+    // },
+    component: login
   },
   {
     path: '/home',
