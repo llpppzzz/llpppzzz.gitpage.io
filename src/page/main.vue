@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-container>
-      <el-header height="100px">
+      <el-header height="80px">
         <page-header></page-header>
       </el-header>
       <el-container>
@@ -45,6 +45,10 @@
 
 <style lang="less">
   .main {
+    .el-header {
+      z-index: 100;
+      box-shadow: 0 3px 6px 0 rgba(139,164,196,0.2);
+    }
     .main-container {
       padding: 24px 0 0 24px
     }

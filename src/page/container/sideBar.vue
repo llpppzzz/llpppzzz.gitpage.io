@@ -13,8 +13,8 @@
           <i class="el-icon-location"></i>
           <span>导航一</span>
         </template>
-        <el-menu-item index="/tuanzi">团子</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
+        <el-menu-item index="/album/tuanzi">团子</el-menu-item>
+        <el-menu-item index="/album/waterfall">unsplash</el-menu-item>
         <el-menu-item index="1-2">选项2</el-menu-item>
         <el-menu-item index="1-2">选项2</el-menu-item>
       </el-submenu>

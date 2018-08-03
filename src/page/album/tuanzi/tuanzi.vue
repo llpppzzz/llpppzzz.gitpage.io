@@ -11,9 +11,9 @@
       </el-aside>
       <el-main>
         <div class="carousel-box">
-          <div class="item-box" v-for="(item,index) in photosList" v-show="showEle[index]">
+          <div class="item-box" v-for="(item,index) in imgs" v-show="showEle[index]">
             <div class="pull-left animated fadeInLeftBig">
-              <img :src="item.urls.small">
+              <img :src="item.src">
             </div>
             <div class="pull-right animated fadeInRightBig">
               <!--<img :src="item.src2">-->
@@ -30,7 +30,6 @@
 
 <script>
   import browser from 'common/browser'
-  import unsplashApi from 'api/unsplash'
 
   let isMobile = browser.isMobile
 
@@ -116,12 +115,8 @@
             src4: '../../static/images/tuanzi/tuanzi.jpg',
             src5: '../../static/images/tuanzi/tuanzi.jpg'
           }
-        ],
-        photosList: []
+        ]
       }
-    },
-    created () {
-      this.getPhotos()
     },
     mounted () {
       window.addEventListener('scroll', this.showPhoto)
@@ -150,14 +145,6 @@
           index = Number.parseInt((this.scroll + 499) / 500)
         }
         this.showEle.splice(index, 1, true)
-      },
-      async getPhotos () {
-        try {
-          let res = await unsplashApi.viewPhotos()
-          this.photosList = res
-        } catch (e) {
-          console.log(e)
-        }
       }
     }
   }

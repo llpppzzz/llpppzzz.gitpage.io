@@ -2,7 +2,8 @@
 import main from 'page/main.vue'
 import login from 'page/login'
 import test from 'page/test/test.vue'
-import tuanzi from 'page/tuanzi/tuanzi.vue'
+import tuanzi from 'page/album/tuanzi/tuanzi.vue'
+import waterfall from 'page/album/waterfall/waterfall.vue'
 import home from 'page/home/home.vue'
 import vueTest from 'page/function/vuexTest.vue'
 import wmTest from 'page/wmTest/userInfo.vue'
@@ -50,15 +51,20 @@ export default [
     ]
   },
   {
-    path: '/tuanzi',
+    path: '/album',
     title: '团子',
     component: main,
-    redirect: '/tuanzi/index',
+    redirect: '/album/tuanzi',
     children: [
       {
-        path: 'index',
+        path: 'tuanzi',
         name: 'tuanzi',
         component: tuanzi
+      },
+      {
+        path: 'waterfall',
+        name: 'waterfall',
+        component: waterfall
       }
     ]
   },

@@ -39,7 +39,7 @@
 <style lang="less">
 
   .header-container {
-    height: 100px;
+    height: 80px;
     background-color: #fff;
     color: #fff;
     top: 0;
