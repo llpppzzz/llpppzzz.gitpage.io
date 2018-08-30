@@ -1,19 +1,12 @@
 <template>
   <div class="waterfall">
     <el-button @click="handleClick()">print</el-button>
+    <el-button @click="openPage()">print</el-button>
   </div>
 </template>
 
 <script>
-  import unsplashApi from 'api/unsplash'
-  import { deepCopy, debounce, throttle } from '../../../common/utils'
-
-  let debounceFn = debounce(function () {
-    console.log(1)
-  }, 3000, false)
-  let throttleFn = throttle(function () {
-    console.log(2)
-  }, 2000, {leading: false})
+  import { debounce, throttle } from '../../../common/utils'
 
   export default {
     name: 'waterfall',
@@ -23,15 +16,15 @@
       }
     },
     created () {
-      // this.getPhotos()
-      let a = {
-        b: {
-          a: 4
-        }
-      }
-      let b = deepCopy({}, a)
-      a.b.a = 2
-      console.log(b)
+      // let a = {
+      //   b: {
+      //     a: 4
+      //   }
+      // }
+      // let b = deepCopy({}, a)
+      // a.b.a = 2
+      // console.log(b)
+      this.getPhotos()
     },
     mounted () {
     },
@@ -42,21 +35,46 @@
     methods: {
       async getPhotos () {
         try {
-          let res = await unsplashApi.viewPhotos()
+          let params = {
+            page: 1,
+            per_page: 1,
+            order_by: 'latest'
+          }
+          let res = await this.$api.unsplash.viewPhotos(params)
           this.photosList = res
+          console.log(res)
         } catch (e) {
           console.log(e)
         }
       },
+      debounceFn: debounce(function () {
+        console.log(1)
+      }, 3000, false),
+      throttleFn: throttle(function () {
+        console.log(2)
+      }, 2000, {leading: false}),
       handleClick () {
-        throttleFn()
+        // this.throttleFn()
+        let text = 'rrrr{{dfsdfdsf}}}'
+        let text1 = 'fff#343fdfd'
+        let rex1 = /#([^#]+)$/
+        let rex2 = /\{\{([^}]+)\}\}/
+        console.log(text.match(rex2))
+        console.log(text1.match(rex1))
+      },
+      openPage () {
+        this.$router.replace({
+          name: 'tuanzi',
+          query: {
+            something: 'dsfjlsdjflsd'
+          }
+        })
       }
     }
   }
 </script>
 
 <style lang="less">
-
 
 </style>
 

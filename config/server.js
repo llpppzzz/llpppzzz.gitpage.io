@@ -1,7 +1,7 @@
 const API_SERVICE = 'http://wmdev.gf.com.cn:8000'
-const UNSPLASH_SERVICE = 'https://api.unsplash.com'
+// const UNSPLASH_SERVICE = 'https://api.unsplash.com'
 
-const authorization = 'Client-ID 8060fdb05166c6187578098e99ded43b0226996c3eee1f21d61fe995878b386e'
+// const authorization = 'Client-ID 8060fdb05166c6187578098e99ded43b0226996c3eee1f21d61fe995878b386e'
 
 module.exports = {
   proxyServer: {
@@ -25,20 +25,20 @@ module.exports = {
         //   })
         // }
       }
-    },
-    '/unsplash': {
-      target: UNSPLASH_SERVICE,
-      changeOrigin: true,
-      // 路由重写规则
-      pathRewrite: {
-        '/unsplash': '/'
-      },
-      // 代理请求发送前做处理
-      onProxyReq: function (proxyReq, req, res) {
-        // 鉴权
-        proxyReq.setHeader('Authorization', authorization);
-
-      }
     }
+    // '/unsplash': {
+    //   target: UNSPLASH_SERVICE,
+    //   changeOrigin: true,
+    //   // 路由重写规则
+    //   pathRewrite: {
+    //     '/unsplash': '/'
+    //   },
+    //   // 代理请求发送前做处理
+    //   // onProxyReq: function (proxyReq, req, res) {
+    //   //   // 鉴权
+    //   //   proxyReq.setHeader('Authorization', authorization);
+    //   //
+    //   // }
+    // }
   }
 }

@@ -16,7 +16,7 @@ module.exports = {
     // Various Dev Server settings
     // 可被 process.env.HOST 覆盖
     // 配置成 0.0.0.0，则服务器外部可访问
-    host: '0.0.0.0',
+    host: 'localhost',
 
     // 是否本地配置 host 调试
     // domain: 'testlocal.gf.com.cn',

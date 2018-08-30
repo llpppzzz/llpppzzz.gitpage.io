@@ -18,5 +18,22 @@ export default {
       options.headers = headers
     }
     return instance.post(url, params, options)
+  },
+  put  (url, params, headers) {
+    let options = {}
+    if (headers) {
+      options.headers = headers
+    }
+    return instance.put(url, params, options)
+  },
+  delete (url, params, headers) {
+    let options = {}
+    if (params) {
+      options.params = params
+    }
+    if (headers) {
+      options.headers = headers
+    }
+    return instance.delete(url, options)
   }
 }
