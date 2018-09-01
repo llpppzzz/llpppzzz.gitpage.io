@@ -1,12 +1,14 @@
 <template>
   <div class="waterfall">
     <el-button @click="handleClick()">print</el-button>
-    <el-button @click="openPage()">print</el-button>
+    <el-button @click="openPage()">jump</el-button>
+    <el-button @click="mockTest()">get</el-button>
   </div>
 </template>
 
 <script>
   import { debounce, throttle } from '../../../common/utils'
+  import http from '@/api'
 
   export default {
     name: 'waterfall',
@@ -69,6 +71,14 @@
             something: 'dsfjlsdjflsd'
           }
         })
+      },
+      async mockTest () {
+        try {
+          let res = await http.mock('calendar').get()
+          console.log(res)
+        } catch (e) {
+          console.log(e)
+        }
       }
     }
   }

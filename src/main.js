@@ -6,9 +6,9 @@ import App from './App'
 import router from './router'
 import store from './store'
 import elementUI from 'element-ui'
-import initFilters from './filters'
-import initDirectives from './directives'
-import initComponents from './components'
+import filters from './filters'
+import directives from './directives'
+import components from './components'
 import api from './api/install'
 // import 'element-ui/lib/theme-chalk/index.css'
 import './element/theme/index.scss'
@@ -17,9 +17,9 @@ import './lib/animate.css'
 Vue.use(elementUI)
 Vue.use(api)
 Vue.config.productionTip = false
-initFilters()
-initDirectives()
-initComponents()
+filters.init()
+directives.init()
+components.init()
 
 /* eslint-disable no-new */
 new Vue({

@@ -12,7 +12,7 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 // 浏览器自动打开的域名
-const domain = config.dev.domain ? `${config.dev.domain}:${PORT || config.dev.port}` : `${HOST || config.dev.host}:${PORT || config.dev.port}`;
+// const domain = config.dev.domain ? `${config.dev.domain}:${PORT || config.dev.port}` : `${HOST || config.dev.host}:${PORT || config.dev.port}`;
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -31,7 +31,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     port: PORT || config.dev.port,
 
     // 浏览器自动打开的域名
-    public: domain,
+    // public: domain,
     open: config.dev.autoOpenBrowser,
     overlay: config.dev.errorOverlay
       ? { warnings: false, errors: true }

@@ -34,13 +34,13 @@ http.interceptors.response.use(response => {
   return data
 }, error => {
   let info = {}
-  let {status, statusText, data} = error.response
   if (!error.response) {
     info = {
       code: 5000,
       msg: 'Network Error'
     }
   } else {
+    let {status, statusText, data} = error.response
     info = {
       code: status,
       data: data,
