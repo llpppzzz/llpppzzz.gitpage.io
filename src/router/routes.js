@@ -7,6 +7,7 @@ import waterfall from 'page/album/waterfall/waterfall.vue'
 import home from 'page/home/home.vue'
 import vueTest from 'page/function/vuexTest.vue'
 import wmTest from 'page/wmTest/userInfo.vue'
+import parent from 'page/function/communication/parent.vue'
 
 export default [
   {
@@ -47,6 +48,11 @@ export default [
         path: 'vuexTest',
         name: 'vuexTest',
         component: vueTest
+      },
+      {
+        path: 'communication/parent',
+        name: 'parent',
+        component: parent
       }
     ]
   },
