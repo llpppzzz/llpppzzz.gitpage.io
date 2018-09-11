@@ -30,7 +30,7 @@
     </div>
     <div class="offset-test">
       <div class="div1">
-        <div class="div1-inner"></div>
+        <div class="div1-inner">dfsdfsdf</div>
       </div>
       <div class="div2"></div>
     </div>
@@ -192,15 +192,17 @@
     .offset-test {
       .div1 {
         margin: 50px;
-        height: 100px;
+        height: 300px;
         position: relative;
+        background: olive;
       }
       .div1-inner {
         position: absolute;
-        top: 20px;
-        left: 100px;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
         width: 150px;
-        height: 100px;
+        //height: 100px;
         background: #666666;
       }
       .div2 {
