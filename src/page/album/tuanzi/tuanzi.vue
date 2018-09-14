@@ -13,7 +13,7 @@
         <div class="carousel-box">
           <div class="item-box" v-for="(item,index) in imgs" v-show="showEle[index]">
             <div class="pull-left animated fadeInLeftBig">
-              <img :src="item.src">
+              <img :src="item.src1">
             </div>
             <div class="pull-right animated fadeInRightBig">
               <!--<img :src="item.src2">-->
@@ -69,51 +69,51 @@
         imgs: [
           {
             showEle: true,
-            src1: '../../static/images/tuanzi/tuanzi.jpg',
-            src2: '../../static/images/tuanzi/tuanzi.jpg',
-            src3: '../../static/images/tuanzi/tuanzi.jpg',
-            src4: '../../static/images/tuanzi/tuanzi.jpg',
-            src5: '../../static/images/tuanzi/tuanzi.jpg'
+            src1: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src3: '/static/images/tuanzi/tuanzi.jpg',
+            src4: '/static/images/tuanzi/tuanzi.jpg',
+            src5: '/static/images/tuanzi/tuanzi.jpg'
           },
           {
             showEle: false,
-            src1: '../../static/images/tuanzi/tuanzi.jpg',
-            src2: '../../static/images/tuanzi/tuanzi.jpg',
-            src3: '../../static/images/tuanzi/tuanzi.jpg',
-            src4: '../../static/images/tuanzi/tuanzi.jpg',
-            src5: '../../static/images/tuanzi/tuanzi.jpg'
+            src1: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src3: '/static/images/tuanzi/tuanzi.jpg',
+            src4: '/static/images/tuanzi/tuanzi.jpg',
+            src5: '/static/images/tuanzi/tuanzi.jpg'
           },
           {
             showEle: false,
-            src1: '../../static/images/tuanzi/tuanzi.jpg',
-            src2: '../../static/images/tuanzi/tuanzi.jpg',
-            src3: '../../static/images/tuanzi/tuanzi.jpg',
-            src4: '../../static/images/tuanzi/tuanzi.jpg',
-            src5: '../../static/images/tuanzi/tuanzi.jpg'
+            src1: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src3: '/static/images/tuanzi/tuanzi.jpg',
+            src4: '/static/images/tuanzi/tuanzi.jpg',
+            src5: '/static/images/tuanzi/tuanzi.jpg'
           },
           {
             showEle: false,
-            src1: '../../static/images/tuanzi/tuanzi.jpg',
-            src2: '../../static/images/tuanzi/tuanzi.jpg',
-            src3: '../../static/images/tuanzi/tuanzi.jpg',
-            src4: '../../static/images/tuanzi/tuanzi.jpg',
-            src5: '../../static/images/tuanzi/tuanzi.jpg'
+            src1: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src3: '/static/images/tuanzi/tuanzi.jpg',
+            src4: '/static/images/tuanzi/tuanzi.jpg',
+            src5: '/static/images/tuanzi/tuanzi.jpg'
           },
           {
             showEle: false,
-            src1: '../../static/images/tuanzi/tuanzi.jpg',
-            src2: '../../static/images/tuanzi/tuanzi.jpg',
-            src3: '../../static/images/tuanzi/tuanzi.jpg',
-            src4: '../../static/images/tuanzi/tuanzi.jpg',
-            src5: '../../static/images/tuanzi/tuanzi.jpg'
+            src1: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src3: '/static/images/tuanzi/tuanzi.jpg',
+            src4: '/static/images/tuanzi/tuanzi.jpg',
+            src5: '/static/images/tuanzi/tuanzi.jpg'
           },
           {
             showEle: false,
-            src1: '../../static/images/tuanzi/tuanzi.jpg',
-            src2: '../../static/images/tuanzi/tuanzi.jpg',
-            src3: '../../static/images/tuanzi/tuanzi.jpg',
-            src4: '../../static/images/tuanzi/tuanzi.jpg',
-            src5: '../../static/images/tuanzi/tuanzi.jpg'
+            src1: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src3: '/static/images/tuanzi/tuanzi.jpg',
+            src4: '/static/images/tuanzi/tuanzi.jpg',
+            src5: '/static/images/tuanzi/tuanzi.jpg'
           }
         ]
       }
