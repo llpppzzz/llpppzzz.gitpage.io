@@ -58,7 +58,7 @@
         float: left;
         height: 80px;
         width: 200px;
-        background: url("~images/logo.png") no-repeat;
+        background: url("/static/images/logo.png") no-repeat;
       }
       nav {
         float: right;

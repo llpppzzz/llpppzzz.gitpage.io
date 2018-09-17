@@ -30,6 +30,7 @@
 
 <script>
   import browser from 'common/browser'
+  import tuanzi2 from '../../../assets/images/tuanzi2.jpg'
 
   let isMobile = browser.isMobile
 
@@ -70,15 +71,15 @@
           {
             showEle: true,
             src1: '/static/images/tuanzi/tuanzi.jpg',
-            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src2: '',
             src3: '/static/images/tuanzi/tuanzi.jpg',
             src4: '/static/images/tuanzi/tuanzi.jpg',
             src5: '/static/images/tuanzi/tuanzi.jpg'
           },
           {
             showEle: false,
-            src1: '/static/images/tuanzi/tuanzi.jpg',
-            src2: '/static/images/tuanzi/tuanzi.jpg',
+            src1: tuanzi2,
+            src2: '../../../assets/images/tuanzi2.jpg',
             src3: '/static/images/tuanzi/tuanzi.jpg',
             src4: '/static/images/tuanzi/tuanzi.jpg',
             src5: '/static/images/tuanzi/tuanzi.jpg'
