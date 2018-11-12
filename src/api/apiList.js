@@ -1,7 +1,2 @@
-import user from './user'
-import unsplash from './unsplash'
-
-export default {
-  user,
-  unsplash
-}
+export { user } from './user'
+export { unsplash } from './unsplash'
