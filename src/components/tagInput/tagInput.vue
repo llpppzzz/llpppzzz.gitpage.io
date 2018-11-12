@@ -28,7 +28,7 @@
   document.addEventListener('click', handler)
 
   export default {
-    name: 'myTagInput',
+    name: 'MyTagInput',
     props: {
       title: {
         type: String,
