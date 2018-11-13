@@ -85,5 +85,22 @@ module.exports = {
     // `npm run build --report`
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.npm_config_report
+  },
+  svgoConfig: {
+    plugins: [
+      { removeViewBox: false },
+      { removeXMLNS: true },
+      {
+        cleanupIDs: {
+          prefix: {
+            toString() {
+              // 可解决内敛 svg id 冲突问题
+              this.counter = this.counter || 0;
+              return `${this.counter++}-`;
+            }
+          }
+        }
+      }
+    ]
   }
 }

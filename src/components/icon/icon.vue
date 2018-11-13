@@ -53,6 +53,7 @@
             id: ''
           }
         }
+        console.log(this.xml)
         let viewBox = this.xml.default.viewBox.split(' ')
         return {
           width: viewBox[2] || 0,

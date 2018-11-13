@@ -9,6 +9,7 @@
     <div class="colorful">
       <span>彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色</span>
     </div>
+    <my-icon name="star"></my-icon>
   </div>
 </template>
 

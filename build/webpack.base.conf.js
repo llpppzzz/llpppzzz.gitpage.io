@@ -4,9 +4,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-function resolve (dir) {
-  return path.join(__dirname, '..', dir)
-}
+const resolve = (dir) => path.join(__dirname, '..', dir)
 
 const createLintingRule = () => ({
   // test: /\.(js|vue)$/,
@@ -58,6 +56,7 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
+        exclude: [resolve('src/assets/icons')],
         options: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
@@ -78,6 +77,14 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {loader: 'svg-sprite-loader', options: {} },
+          {loader: 'svgo-loader', options: config.svgoConfig }
+        ],
+        include: [resolve('src/assets/icons')]
       }
     ]
   },
