@@ -1,5 +1,8 @@
 <template lang="pug">
-  svg(version="1.1", class="gf-icon", :role="label ? 'img' : 'presentation'", :aria-label="label", :width="currentSize.width", :height="currentSize.height", :viewBox="box", :style="style")
+  svg.gf-icon(version="1.1",
+  :width="currentSize.width",
+  :height="currentSize.height",
+  :viewBox="box")
     use(:xlink:href="icon.id")
 </template>
 
@@ -22,8 +25,7 @@
       width: {
         type: [Number, String],
         default: null
-      },
-      label: String
+      }
     },
     data () {
       return {
@@ -39,9 +41,9 @@
     computed: {
       baseSize () {
         let size = this.size
-        size = typeof size === 'undefined' ? 1 : Number(size)
+        size = Number(size)
         if (isNaN(size) || size <= 0) {
-          return 1
+          return 10
         }
         return size
       },
@@ -53,7 +55,6 @@
             id: ''
           }
         }
-        console.log(this.xml)
         let viewBox = this.xml.default.viewBox.split(' ')
         return {
           width: viewBox[2] || 0,
@@ -100,14 +101,6 @@
             width: height * this.scale,
             height: height
           }
-        }
-      },
-      style () {
-        if (this.baseSize === 1) {
-          return false
-        }
-        return {
-          fontSize: this.baseSize + 'px'
         }
       }
     },

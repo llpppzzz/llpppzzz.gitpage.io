@@ -89,18 +89,7 @@ module.exports = {
   svgoConfig: {
     plugins: [
       { removeViewBox: false },
-      { removeXMLNS: true },
-      {
-        cleanupIDs: {
-          prefix: {
-            toString() {
-              // 可解决内敛 svg id 冲突问题
-              this.counter = this.counter || 0;
-              return `${this.counter++}-`;
-            }
-          }
-        }
-      }
+      { removeXMLNS: true }
     ]
   }
 }
