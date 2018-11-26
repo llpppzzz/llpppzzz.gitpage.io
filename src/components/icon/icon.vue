@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'MyIcon',
+    name: 'SvgIcon',
     props: {
       name: {
         type: String,

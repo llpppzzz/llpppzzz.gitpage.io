@@ -2,7 +2,7 @@
   <div class="waterfall">
     <el-button @click="handleClick()">print</el-button>
     <el-button @click="openPage()">jump</el-button>
-    <el-button @click="mockTest()">get</el-button>
+    <el-button @click="getPhotos()">get</el-button>
   </div>
 </template>
 

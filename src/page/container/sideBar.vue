@@ -16,7 +16,7 @@
         <el-menu-item index="/album/tuanzi">团子</el-menu-item>
         <el-menu-item index="/album/waterfall">unsplash</el-menu-item>
         <el-menu-item index="/function/communication/parent">通信</el-menu-item>
-        <el-menu-item index="1-2">选项2</el-menu-item>
+        <el-menu-item index="/nebulas">DAPP</el-menu-item>
       </el-submenu>
       <el-submenu index="3">
         <template slot="title">

@@ -9,15 +9,17 @@
     <div class="colorful">
       <span>彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色</span>
     </div>
-    <my-icon name="star" size="20"></my-icon>
-    <my-icon name="product-ranking-no1" width="30"></my-icon>
+    <svg-icon name="star" size="20"></svg-icon>
+    <svg-icon name="product-ranking-no1" width="30"></svg-icon>
   </div>
 </template>
 
 <script>
+  import SvgIcon from "../../components/icon/icon";
   export default {
     name: 'home-container',
     components: {
+      SvgIcon
     },
     data () {
       return {
