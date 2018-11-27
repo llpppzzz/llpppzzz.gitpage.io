@@ -1,17 +1,22 @@
-import 'nasa.js/dist/nasa.js'
+import '../../../static/lib/nasa.js'
 
-const addr = 'n1kbi8t4k1k6Z2az5XKrsA3dZ5qhsX2kHiU'
+const addr = 'n1onduXD12Begh2tSQ92cCECzvjQJc5w72T'
 
 export default {
   getAllItems (params) {
     return Nasa.query(addr, 'getAllItems', [])
   },
-  async setItem (content) {
-    try {
-      let payId = await Nasa.call(addr, 'setItem', [content])
-      return Nasa.getTxResult(payId)
-    } catch (e) {
-      return new Error(e)
-    }
+  setItem (content) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const result = await Nasa.call(addr, 'setItem', [content])
+        console.log(result)
+        const payId = result.payId
+        const res = await Nasa.getTxResult(payId)
+        resolve(result)
+      } catch (e) {
+        reject(e)
+      }
+    })
   }
 }

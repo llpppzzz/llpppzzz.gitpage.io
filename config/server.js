@@ -5,6 +5,7 @@ const API_SERVICE = 'http://wmdev.gf.com.cn:8000'
 
 module.exports = {
   proxyServer: {
+
     '/api': {
       target: API_SERVICE,
       changeOrigin: true,

@@ -12,7 +12,8 @@ import {
   Menu,
   MenuItem,
   MenuItemGroup,
-  Submenu
+  Submenu,
+  Message
 } from 'element-ui'
 
 export default {
@@ -28,5 +29,6 @@ export default {
     Vue.use(MenuItem)
     Vue.use(MenuItemGroup)
     Vue.use(Submenu)
+    Vue.prototype.$message = Message
   }
 }

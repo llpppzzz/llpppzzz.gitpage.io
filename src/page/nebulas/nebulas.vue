@@ -2,15 +2,15 @@
   <div class="nebulas">
     <div class="nebulas-list">
       <ul>
-        <li v-for="(index, item) in result" :key="index">
+        <li v-for="item in result">
           <span>{{item.content}}</span>
-          <span>{{item.published_at}}</span>
+          <span calss="time">{{item.published_at | dateConvert}}</span>
         </li>
       </ul>
     </div>
     <div class="nebulas-bottom">
-      <el-input type="textarea" v-model="content"></el-input>
-      <el-button size="small" @click="submit()">提交</el-button>
+      <el-input type="textarea" v-model="content" resize="none"></el-input>
+      <el-button size="mini" @click="submit()">提交</el-button>
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@
       }
     },
     created () {
+      this.getAllItems()
     },
     mounted () {
     },
@@ -33,21 +34,28 @@
     watch: {
     },
     methods: {
-      async contractTest () {
+      async getAllItems () {
         try {
           let res = await this.$api.contract.getAllItems()
-          console.log(res)
-          this.result = res
+          this.result = res.execResult
         } catch (e) {
           console.log(e)
         }
       },
       async submit () {
         try {
-          let res = await this.$api.contract.setItem(this.content)
-          console.log(res)
+          await this.$api.contract.setItem(this.content)
+          this.$message({
+            message: '发布成功!',
+            type: 'success'
+          })
+          this.getAllItems()
         } catch (e) {
           console.log(e)
+          this.$message({
+            message: JSON.stringify(e),
+            type: 'error'
+          })
         }
       }
     }
@@ -55,8 +63,31 @@
 </script>
 
 <style lang="less">
+  @blue: #409EFF;
+
   .nebulas {
     display: block;
+    .nebulas-list {
+      width: 300px;
+      li {
+        font-size: 14px;
+        border-bottom: 1px solid #ededed;
+        line-height: 26px;
+        display: flex;
+        justify-content: space-between;
+        &:hover {
+          color: @blue
+        }
+      }
+    }
+    .nebulas-bottom {
+      margin-top: 30px;
+      display: flex;
+      align-items: flex-end;
+      .el-button {
+        margin-left: 16px;
+      }
+    }
   }
 
 </style>
