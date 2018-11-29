@@ -13,6 +13,10 @@ import {
   MenuItem,
   MenuItemGroup,
   Submenu,
+  Table,
+  TableColumn,
+  Pagination,
+  Loading,
   Message
 } from 'element-ui'
 
@@ -29,6 +33,10 @@ export default {
     Vue.use(MenuItem)
     Vue.use(MenuItemGroup)
     Vue.use(Submenu)
+    Vue.use(Table)
+    Vue.use(TableColumn)
+    Vue.use(Pagination)
+    Vue.use(Loading.directive)
     Vue.prototype.$message = Message
   }
 }

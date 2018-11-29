@@ -75,7 +75,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     // 清空文件夹
-    new CleanWebpackPlugin(['../dist']),
+    new CleanWebpackPlugin(['../docs']),
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
