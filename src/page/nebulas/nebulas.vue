@@ -1,12 +1,15 @@
 <template>
-  <div class="nebulas">
+  <div class="nebulas" v-loading="pageLoading">
     <div class="nebulas-list">
-      <ul>
-        <li v-for="item in result">
-          <span>{{item.content}}</span>
-          <span calss="time">{{item.published_at | dateConvert}}</span>
-        </li>
-      </ul>
+      <el-table :data="result" stripe v-loading="loading" @sort-change="sortChange" :default-sort="{ prop: 'published_at', order: 'descending' }">
+        <el-table-column label="内容" prop="content"></el-table-column>
+        <el-table-column label="发布时间" prop="published_at" sortable>
+          <template slot-scope="{row}">
+            <span>{{row.published_at | dateConvert}}</span>
+          </template>
+        </el-table-column>
+      </el-table>
+      <my-pagination :api="getAllApi" :params="params" @list="getList"></my-pagination>
     </div>
     <div class="nebulas-bottom">
       <el-input type="textarea" v-model="content" resize="none"></el-input>
@@ -21,11 +24,16 @@
     data () {
       return {
         content: '',
-        result: []
+        result: [],
+        getAllApi: this.$api.contract.getAllItems,
+        pageLoading: false,
+        loading: true,
+        sort: '',
+        direction: '',
+        params: {}
       }
     },
     created () {
-      this.getAllItems()
     },
     mounted () {
     },
@@ -34,28 +42,34 @@
     watch: {
     },
     methods: {
-      async getAllItems () {
-        try {
-          let res = await this.$api.contract.getAllItems()
-          this.result = res.execResult
-        } catch (e) {
-          console.log(e)
+      changeStatus () {
+        this.loading = true
+        this.params = {
+          dir: this.direction,
+          sort: this.sort
         }
       },
+      getList (data) {
+        this.result = data.list
+        this.loading = data.status
+        this.pageLoading = false
+      },
+      // 排序
+      sortChange (sortVal) {
+        this.sort = sortVal.prop
+        this.direction = sortVal.order
+        this.changeStatus()
+      },
       async submit () {
+        this.pageLoading = true
         try {
           await this.$api.contract.setItem(this.content)
-          this.$message({
-            message: '发布成功!',
-            type: 'success'
-          })
-          this.getAllItems()
+          this.content = ''
+          this.$message.success('发布成功!')
+          this.changeStatus()
         } catch (e) {
-          console.log(e)
-          this.$message({
-            message: JSON.stringify(e),
-            type: 'error'
-          })
+          this.$message.error(e.message)
+          this.pageLoading = false
         }
       }
     }
@@ -68,17 +82,7 @@
   .nebulas {
     display: block;
     .nebulas-list {
-      width: 300px;
-      li {
-        font-size: 14px;
-        border-bottom: 1px solid #ededed;
-        line-height: 26px;
-        display: flex;
-        justify-content: space-between;
-        &:hover {
-          color: @blue
-        }
-      }
+      width: 500px;
     }
     .nebulas-bottom {
       margin-top: 30px;

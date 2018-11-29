@@ -294,11 +294,12 @@ void function (window, document, undefined) {
         return request(obj);
       };
 
-      var post = function (url, body) {
+      var post = function (url, body, header) {
         var obj = {
           url: url,
           method: "POST",
-          body: body
+          body: JSON.stringify(body),
+          header: header
         };
         return request(obj);
       };
@@ -6907,6 +6908,16 @@ void function (window, document, undefined) {
           var url = options.callback || config.payUrl(options.debug);
           url = url + "/query?payId=" + serialNumber;
           return http.get(url);
+        },
+        getTransactionReceipt: function (sn) {
+          const url = 'https://mainnet.nebulas.io/v1/user/getTransactionReceipt'
+          const header = {
+            'content-type': 'application/json'
+          }
+          var payload = {
+            hash: sn
+          };
+          return http.post(url, payload, header);
         }
       };
 
@@ -7754,7 +7765,7 @@ void function (window, document, undefined) {
       function getTxResult(sn) {
         var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-        if (!Object(__WEBPACK_IMPORTED_MODULE_4__util_index__["isValidPayId"])(sn)) return Promise.reject(new Error(__WEBPACK_IMPORTED_MODULE_0__const_error__["INVALID_ARG"]));
+        if (!Object(__WEBPACK_IMPORTED_MODULE_4__util_index__["isValidTxHash"])(sn)) return Promise.reject(new Error(__WEBPACK_IMPORTED_MODULE_0__const_error__["INVALID_ARG"]));
 
         return new Promise(function (resolve, reject) {
           // 在一分钟之内总共尝试 6 次，时间间隔做了优化，争取以最快的速度拿到交易结果
@@ -7774,8 +7785,70 @@ void function (window, document, undefined) {
             check();
           }
 
+          // function check() {
+          //   nebPay.queryPayInfo(sn, Object(__WEBPACK_IMPORTED_MODULE_3__core_nebulas_config__["b" /* getNebPayOptions */])()).then(function (res) {
+          //     checkingCount++;
+          //     // console.log(`get tx result (try ${checkingCount}): `, typeof res, res)
+          //
+          //     var data = {};
+          //     try {
+          //       data = JSON.parse(res);
+          //     } catch (e) {
+          //       console.error('JSON parsing error');
+          //     }
+          //     lastCheckResult = data;
+          //
+          //     // 0: Failed. It means the transaction has been submitted on chain but its execution failed.
+          //     // 1: Successful. It means the transaction has been submitted on chain and its execution succeed.
+          //     // 2: Pending. It means the transaction hasn't been packed into a block.
+          //
+          //     // 本次查询成功
+          //     if (data.code === 0) {
+          //       var txData = data.data || {};
+          //       /*
+          // console.log('get tx info: ', txData);
+          // */
+          //
+          //       if (txData.status === 0) {
+          //         var errMsg = void 0;
+          //         // 尝试获取精确的合约错误信息
+          //         if (txData.execute_error) {
+          //           errMsg = Object(__WEBPACK_IMPORTED_MODULE_5__util_string__["a" /* stripErrorMsgPrefix */])(txData.execute_error);
+          //         }
+          //         // 兜底的错误信息
+          //         if (!errMsg) {
+          //           errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["TX_FAILED"];
+          //           if (txData.type === 'call') errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["CALL_FAILED"];
+          //           if (txData.type === 'deploy') errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["DEPLOY_FAILED"];
+          //         }
+          //         resolve(formatTxResult(txData, errMsg));
+          //       } else if (txData.status === 1) {
+          //         resolve(formatTxResult(txData));
+          //       } else if (txData.status === 2) {
+          //         retry();
+          //       } else {
+          //         reject(new Error(__WEBPACK_IMPORTED_MODULE_0__const_error__["TX_STATUS_UNKNOWN"]));
+          //       }
+          //
+          //       // 把用户的钱包地址缓存下来
+          //       var addr = txData.from;
+          //       if (Object(__WEBPACK_IMPORTED_MODULE_4__util_index__["isValidAddr"])(addr)) Object(__WEBPACK_IMPORTED_MODULE_2__util_addr__["b" /* setAvailableAddr */])(addr);
+          //     }
+          //     // 本次查询出现错误
+          //     else {
+          //       // 如果返回错误信息，很可能只是服务器不稳定，所以不放弃，继续重试
+          //       var msg = data.msg || __WEBPACK_IMPORTED_MODULE_0__const_error__["SERVER_ERROR"];
+          //       console.error(msg);
+          //       retry();
+          //     }
+          //   }, function (err) {
+          //     // 网络错误会进到这里。不放弃，继续重试
+          //     console.error(err.message || __WEBPACK_IMPORTED_MODULE_0__const_error__["NETWORK_ERROR"]);
+          //     retry();
+          //   });
+          // }
           function check() {
-            nebPay.queryPayInfo(sn, Object(__WEBPACK_IMPORTED_MODULE_3__core_nebulas_config__["b" /* getNebPayOptions */])()).then(function (res) {
+            nebPay.getTransactionReceipt(sn).then(function (res) {
               checkingCount++;
               // console.log(`get tx result (try ${checkingCount}): `, typeof res, res)
 
@@ -7790,46 +7863,35 @@ void function (window, document, undefined) {
               // 0: Failed. It means the transaction has been submitted on chain but its execution failed.
               // 1: Successful. It means the transaction has been submitted on chain and its execution succeed.
               // 2: Pending. It means the transaction hasn't been packed into a block.
-
+              console.log(data)
               // 本次查询成功
-              if (data.code === 0) {
-                var txData = data.data || {};
-                /*
-					console.log('get tx info: ', txData);
-					*/
+              var txData = data.result || {};
 
-                if (txData.status === 0) {
-                  var errMsg = void 0;
-                  // 尝试获取精确的合约错误信息
-                  if (txData.execute_error) {
-                    errMsg = Object(__WEBPACK_IMPORTED_MODULE_5__util_string__["a" /* stripErrorMsgPrefix */])(txData.execute_error);
-                  }
-                  // 兜底的错误信息
-                  if (!errMsg) {
-                    errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["TX_FAILED"];
-                    if (txData.type === 'call') errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["CALL_FAILED"];
-                    if (txData.type === 'deploy') errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["DEPLOY_FAILED"];
-                  }
-                  resolve(formatTxResult(txData, errMsg));
-                } else if (txData.status === 1) {
-                  resolve(formatTxResult(txData));
-                } else if (txData.status === 2) {
-                  retry();
-                } else {
-                  reject(new Error(__WEBPACK_IMPORTED_MODULE_0__const_error__["TX_STATUS_UNKNOWN"]));
+              if (txData.status === 0) {
+                var errMsg = void 0;
+                // 尝试获取精确的合约错误信息
+                if (txData.execute_error) {
+                  errMsg = Object(__WEBPACK_IMPORTED_MODULE_5__util_string__["a" /* stripErrorMsgPrefix */])(txData.execute_error);
                 }
-
-                // 把用户的钱包地址缓存下来
-                var addr = txData.from;
-                if (Object(__WEBPACK_IMPORTED_MODULE_4__util_index__["isValidAddr"])(addr)) Object(__WEBPACK_IMPORTED_MODULE_2__util_addr__["b" /* setAvailableAddr */])(addr);
-              }
-              // 本次查询出现错误
-              else {
-                // 如果返回错误信息，很可能只是服务器不稳定，所以不放弃，继续重试
-                var msg = data.msg || __WEBPACK_IMPORTED_MODULE_0__const_error__["SERVER_ERROR"];
-                console.error(msg);
+                // 兜底的错误信息
+                if (!errMsg) {
+                  errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["TX_FAILED"];
+                  if (txData.type === 'call') errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["CALL_FAILED"];
+                  if (txData.type === 'deploy') errMsg = __WEBPACK_IMPORTED_MODULE_0__const_error__["DEPLOY_FAILED"];
+                }
+                resolve(formatTxResult(txData, errMsg));
+              } else if (txData.status === 1) {
+                resolve(formatTxResult(txData));
+              } else if (txData.status === 2) {
                 retry();
+              } else {
+                reject(new Error(__WEBPACK_IMPORTED_MODULE_0__const_error__["TX_STATUS_UNKNOWN"]));
               }
+
+              // 把用户的钱包地址缓存下来
+              var addr = txData.from;
+              if (Object(__WEBPACK_IMPORTED_MODULE_4__util_index__["isValidAddr"])(addr)) Object(__WEBPACK_IMPORTED_MODULE_2__util_addr__["b" /* setAvailableAddr */])(addr);
+
             }, function (err) {
               // 网络错误会进到这里。不放弃，继续重试
               console.error(err.message || __WEBPACK_IMPORTED_MODULE_0__const_error__["NETWORK_ERROR"]);
@@ -8318,7 +8380,6 @@ listener 拿到的响应（res）：
               /*
 				console.log('listener: ', typeof res === 'undefined' ? 'undefined' : _typeof(res), res);
 				*/
-
               if (typeof res === 'string') {
                 res = res.toLowerCase();
                 // 如果用户取消交易
