@@ -1,5 +1,4 @@
 // import 'nasa.js/dist/nasa.js'
-import '../../../static/lib/nasa.js'
 
 const addr = 'n1nxDvjZZsCrVYrqrw4FwMeDDcGTvZ89b6P'
 

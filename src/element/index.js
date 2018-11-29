@@ -17,7 +17,8 @@ import {
   TableColumn,
   Pagination,
   Loading,
-  Message
+  Message,
+  MessageBox
 } from 'element-ui'
 
 export default {
@@ -38,5 +39,8 @@ export default {
     Vue.use(Pagination)
     Vue.use(Loading.directive)
     Vue.prototype.$message = Message
+    Vue.prototype.$msgbox = MessageBox
+    Vue.prototype.$alert = MessageBox.alert
+    Vue.prototype.$confirm = MessageBox.confirm
   }
 }
