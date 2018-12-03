@@ -1,7 +1,7 @@
 <template>
   <div class="nebulas"
        v-loading="pageLoading"
-       element-loading-text="正在确认"
+       element-loading-text="已提交，正在确认"
        element-loading-spinner="el-icon-loading"
        element-loading-background="rgba(0, 0, 0, 0.8)">
     <div class="nebulas-list">
@@ -88,10 +88,11 @@
         this.changeStatus()
       },
       async submit () {
-        this.pageLoading = true
         try {
-          let res = await this.$api.contract.setItem(this.content)
-          console.log(res)
+          let result = await this.$api.contract.setItem(this.content)
+          const txHash = result.txHash
+          this.pageLoading = true
+          await this.$api.contract.getTxResult(txHash)
           this.content = ''
           this.$message.success('发布成功!')
           this.changeStatus()
