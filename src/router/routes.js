@@ -75,11 +75,6 @@ export default [
         path: 'index',
         name: 'test',
         component: loader('test/test')
-      },
-      {
-        path: 'wmTest',
-        name: 'wmTest',
-        component: loader('wmTest/userInfo')
       }
     ]
   },

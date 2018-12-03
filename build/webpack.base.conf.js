@@ -43,6 +43,10 @@ module.exports = {
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // {
+      //   test: resolve('static/lib/nasa'),
+      //   loader: 'expose-loader?Nasa'
+      // },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
