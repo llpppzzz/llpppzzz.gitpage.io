@@ -26,9 +26,6 @@
         <el-menu-item index="/test">
           <span slot="title">功能测试</span>
         </el-menu-item>
-        <el-menu-item index="/test/wmTest">
-          <span slot="title">财富测试</span>
-        </el-menu-item>
       </el-submenu>
     </el-menu>
   </div>

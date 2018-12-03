@@ -9,13 +9,10 @@
 </template>
 
 <script>
-  import userApi from '../api/user'
   export default {
     name: 'login',
     data () {
       return {
-        userId: 'gzzhengjing',
-        password: 'a123456'
       }
     },
     created () {
@@ -27,32 +24,6 @@
     watch: {
     },
     methods: {
-      async login () {
-        try {
-          let result = await userApi.login(this.userId, this.password)
-          if (result) {
-            // 调用 refresh 接口，刷新用户缓存信息
-            // await userApi.getUserInfo(this.userId)
-            this.$router.push({path: '/'})
-          }
-        } catch (err) {
-          // if (err.data && err.data.msg) {
-          //   const msg = err.data.msg
-          //   if (!~msg.indexOf('锁定')) {
-          //     const times = msg.match(LOGIN_RETRY_TIMES_REG)
-          //     if (times) {
-          //       const time = times[1] || 0
-          //       this.setError(`用户名或密码错误，您还有${time}次尝试机会`)
-          //     } else {
-          //       this.setError(err.data.msg)
-          //     }
-          //   } else {
-          //     this.hideError()
-          //     this.setInterval(msg)
-          //   }
-          // }
-        }
-      }
     }
   }
 </script>

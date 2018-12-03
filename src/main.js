@@ -10,7 +10,7 @@ import filters from './filters'
 import directives from './directives'
 import components from './components'
 import api from './api/install'
-import './lib/animate.css'
+import '../static/lib/animate.css'
 
 Vue.use(api)
 Vue.config.productionTip = false
