@@ -5,7 +5,8 @@
       :default-openeds="isOpened"
       class="el-menu-vertical-demo"
       :router="true"
-      unique-opened>
+      unique-opened
+      :collapse="collapse">
       <template v-for="item in menu">
         <!--有1个以上子菜单的-->
         <el-submenu v-if="item.children.length > 1" :index="item.path">
@@ -46,6 +47,9 @@
 
   export default {
     name: 'side-bar',
+    props: {
+      collapse: false
+    },
     data () {
       return {
         menu: [],
@@ -72,8 +76,12 @@
 
 <style lang="less">
   .side-bar {
+    height: 100%;
     width: 200px;
     text-align: left;
+    .el-menu {
+      height: 100%;
+    }
   }
 
 </style>

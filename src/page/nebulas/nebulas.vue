@@ -112,7 +112,7 @@
   .nebulas {
     display: block;
     .nebulas-list {
-      width: 500px;
+      width: 100%;
     }
     .nebulas-bottom {
       margin-top: 30px;

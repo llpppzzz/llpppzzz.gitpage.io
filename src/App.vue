@@ -17,22 +17,13 @@
 <style lang="less">
   @import "style/index";
 
+  html, body {
+    height: 100%;
+  }
+
   #app {
     height: 100%
   }
-
-  a {
-    color: #42b983;
-  }
-
-  .pull-left {
-    float: left;
-  }
-
-  .pull-right {
-    float: right;
-  }
-
 
 </style>
 

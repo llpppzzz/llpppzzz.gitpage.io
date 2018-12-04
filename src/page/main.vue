@@ -39,12 +39,35 @@
 
 <style lang="less">
   .main {
-    .page-header {
-      z-index: 100;
-      box-shadow: 0 3px 6px 0 rgba(139,164,196,0.2);
+    height: 100%;
+    @media (max-width: 768px) {
+      .main-bottom {
+        padding: 0;
+      }
+      .page-header {
+        padding: 0;
+        .logo {
+          height: 50px;
+        }
+      }
+      .side-bar {
+        display: none;
+      }
+      .page-container {
+        width: 100%;
+      }
+    }
+    @media (min-width: 768px) {
+      .main-bottom {
+        padding: 0 80px;
+      }
+      .right-menu {
+        display: none;
+      }
     }
     .main-bottom {
-      padding: 0 80px;
+      height: 100%;
+      //padding: 0 80px;
       display: flex;
       .side-bar {
         flex: none;

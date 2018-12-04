@@ -15,6 +15,9 @@ export default {
       setTimeout(() => {
         document.body.removeChild(a)
       }, 1000)
+    },
+    go (target) {
+      this.$router.push(target)
     }
   }
 }
