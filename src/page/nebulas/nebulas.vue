@@ -25,7 +25,10 @@
 <script>
   // import 'nasa.js/dist/nasa.js'
   import '../../../static/lib/nasa.js'
+  import browser from '../../common/browser'
   import baseMixin from '../../mixin/base'
+
+  const isMobile = browser.isMobile
 
   export default {
     name: 'nebulas',
@@ -43,24 +46,27 @@
       }
     },
     created () {
-      Nasa.ready(() => {
-        // 这里是安全的执行时机，以下代码可以得到正确的结果
-        if (!Nasa.ua.isWalletExtensionInstalled()) {
-          this.$confirm('请先安装星云钱包 Chrome 扩展！', '', {
-            // customClass: 'customize-confirm',
-            showCancelButton: true,
-            confirmButtonText: 'GitHub',
-            type: 'error'
-          }).then(({ value }) => {
-            this.open('https://github.com/nebulasio/WebExtensionWallet')
-          }).catch(() => {
-          })
-        } else {
-          // Nasa.user.getAddr().then((addr) => {
-          //   alert('您的钱包地址是：\n' + addr)
-          // })
-        }
-      })
+      console.log(isMobile)
+      if (!isMobile) {
+        Nasa.ready(() => {
+          // 这里是安全的执行时机，以下代码可以得到正确的结果
+          if (!Nasa.ua.isWalletExtensionInstalled()) {
+            this.$confirm('请先安装星云钱包 Chrome 扩展！', '', {
+              // customClass: 'customize-confirm',
+              showCancelButton: true,
+              confirmButtonText: 'GitHub',
+              type: 'error'
+            }).then(({ value }) => {
+              this.open('https://github.com/nebulasio/WebExtensionWallet')
+            }).catch(() => {
+            })
+          } else {
+            // Nasa.user.getAddr().then((addr) => {
+            //   alert('您的钱包地址是：\n' + addr)
+            // })
+          }
+        })
+      }
     },
     mounted () {
     },

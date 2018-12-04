@@ -6,7 +6,7 @@
       class="el-menu-vertical-demo"
       :router="true"
       unique-opened
-      :collapse="collapse">
+      @select="onSelect">
       <template v-for="item in menu">
         <!--有1个以上子菜单的-->
         <el-submenu v-if="item.children.length > 1" :index="item.path">
@@ -48,7 +48,6 @@
   export default {
     name: 'side-bar',
     props: {
-      collapse: false
     },
     data () {
       return {
@@ -70,6 +69,9 @@
     watch: {
     },
     methods: {
+      onSelect () {
+        this.$emit('selected')
+      }
     }
   }
 </script>
