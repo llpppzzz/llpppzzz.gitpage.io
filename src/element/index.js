@@ -11,6 +11,7 @@ import {
   Table,
   TableColumn,
   Pagination,
+  Popover,
   Loading,
   Message,
   MessageBox
@@ -27,6 +28,7 @@ export default {
     Vue.use(Table)
     Vue.use(TableColumn)
     Vue.use(Pagination)
+    Vue.use(Popover)
     Vue.use(Loading.directive)
     Vue.prototype.$message = Message
     Vue.prototype.$msgbox = MessageBox

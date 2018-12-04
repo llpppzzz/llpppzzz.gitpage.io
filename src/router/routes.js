@@ -12,6 +12,16 @@ export default [
     component: loader('login')
   },
   {
+    path: '/',
+    name: 'root',
+    title: '首页',
+    meta: {
+      show: false
+    },
+    component: Main,
+    redirect: '/home/index'
+  },
+  {
     path: '/home',
     name: 'home',
     title: '首页',
