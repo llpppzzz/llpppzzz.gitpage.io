@@ -3,15 +3,10 @@ import './theme/index.scss'
 
 import {
   Autocomplete,
-  Aside,
-  Container,
-  Main,
-  Header,
   Input,
   Button,
   Menu,
   MenuItem,
-  MenuItemGroup,
   Submenu,
   Table,
   TableColumn,
@@ -24,15 +19,10 @@ import {
 export default {
   init () {
     Vue.use(Autocomplete)
-    Vue.use(Aside)
-    Vue.use(Container)
-    Vue.use(Main)
-    Vue.use(Header)
     Vue.use(Input)
     Vue.use(Button)
     Vue.use(Menu)
     Vue.use(MenuItem)
-    Vue.use(MenuItemGroup)
     Vue.use(Submenu)
     Vue.use(Table)
     Vue.use(TableColumn)

@@ -1,25 +1,24 @@
+import Main from '../page/main'
 import loader from './loader'
 
 export default [
   {
-    path: '/',
-    title: '首页',
-    component: loader('main'),
-    redirect: '/home/index'
-  },
-  {
     path: '/login',
     name: 'login',
     title: '登录',
-    // meta: {
-    //   auth: false
-    // },
+    meta: {
+      show: false
+    },
     component: loader('login')
   },
   {
     path: '/home',
+    name: 'home',
     title: '首页',
-    component: loader('main'),
+    meta: {
+      icon: 'el-icon-home'
+    },
+    component: Main,
     redirect: '/home/index',
     children: [
       {
@@ -32,7 +31,10 @@ export default [
   {
     path: '/function',
     title: '功能',
-    component: loader('main'),
+    meta: {
+      icon: 'el-icon-menu'
+    },
+    component: Main,
     redirect: '/function/vuexTest',
     children: [
       {
@@ -50,7 +52,10 @@ export default [
   {
     path: '/album',
     title: '团子',
-    component: loader('main'),
+    meta: {
+      icon: 'el-icon-star-on'
+    },
+    component: Main,
     redirect: '/album/tuanzi',
     children: [
       {
@@ -66,28 +71,34 @@ export default [
     ]
   },
   {
-    path: '/test',
-    title: '测试',
-    component: loader('main'),
-    redirect: '/test/index',
-    children: [
-      {
-        path: 'index',
-        name: 'test',
-        component: loader('test/test')
-      }
-    ]
-  },
-  {
     path: '/nebulas',
     title: '星云链',
-    component: loader('main'),
+    meta: {
+      icon: 'el-icon-nebulas'
+    },
+    component: Main,
     redirect: '/nebulas/index',
     children: [
       {
         path: 'index',
         name: 'nebulas',
         component: loader('nebulas/nebulas')
+      }
+    ]
+  },
+  {
+    path: '/test',
+    title: '测试',
+    meta: {
+      icon: 'el-icon-setting'
+    },
+    component: Main,
+    redirect: '/test/index',
+    children: [
+      {
+        path: 'index',
+        name: 'test',
+        component: loader('test/test')
       }
     ]
   }
