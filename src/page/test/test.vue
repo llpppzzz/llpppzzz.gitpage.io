@@ -1,32 +1,11 @@
 <template>
   <div class="test">
-    <div class="top-box">
-      <div :class="['device', deviceCode == item ? 'active' : '']"
-      v-for="(item,index) in deviceList"
-      :key="index"
-      @click="getResource(item)">{{item}}</div>
-    </div>
-    <div class="body-box">
-      <el-checkbox-group v-model="checkedGroup" @change="checkChange">
-        <el-checkbox v-for="item in cardList" :key="item.code" :label="item.code"></el-checkbox>
-      </el-checkbox-group>
-      <el-button @click="save()">保存</el-button>
-    </div>
-    <el-button>开始</el-button>
-    <div class="tag-input-test">
-      <div class="title"
-        v-for="(tag, index) in tags"
-        :key="index"
-      >
-        <span>{{tag.title}}</span>
-        <input type="text" v-model="tag.title">
+    <div class="row">
+      <div class="colorful">
+        <span>彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色彩色</span>
       </div>
-    </div>
-    <div class="tag-input-test">
-      <my-tag-input v-for="(tag, index) in tags"
-        :key="index"
-        :title="tag.title"
-        @change="tagChange"></my-tag-input>
+      <svg-icon name="star" size="20"></svg-icon>
+      <svg-icon name="product-ranking-no1" width="30"></svg-icon>
     </div>
     <div class="offset-test">
       <div class="div1">
@@ -38,6 +17,8 @@
 </template>
 
 <script>
+  import SvgIcon from '../../components/icon/icon'
+
   function getPosition (selector1, selector2) {
     let getOffset = function o (node, offset) {
       if (!node.offsetParent) {
@@ -76,63 +57,11 @@
 
   export default {
     name: 'test',
+    components: {
+      SvgIcon
+    },
     data () {
       return {
-        deviceList: ['1', '2', '3', '4', '5', '6'],
-        cardList: [{
-          code: '111',
-          name: 'xxx'
-        }, {
-          code: '112',
-          name: 'xxx'
-        }, {
-          code: '113',
-          name: 'xxx'
-        }, {
-          code: '114',
-          name: 'xxx'
-        }, {
-          code: '115',
-          name: 'xxx'
-        }, {
-          code: '116',
-          name: 'xxx'
-        }, {
-          code: '117',
-          name: 'xxx'
-        }],
-        deviceCode: '1',
-        list: ['111', '112'],
-        fullData: {},
-        checkedGroup: [],
-        tags: [
-          {
-            title: '沙雕龙'
-          },
-          {
-            title: '沙雕龙',
-            min: 10,
-            max: 100
-          },
-          {
-            title: '沙雕龙'
-          },
-          {
-            title: '沙雕龙',
-            min: 10,
-            max: 100
-          },
-          {
-            title: '沙雕龙',
-            min: 20,
-            max: 100
-          },
-          {
-            title: '沙雕龙',
-            min: 10,
-            max: 100
-          }
-        ]
       }
     },
     created () {
@@ -143,51 +72,27 @@
     computed: {
     },
     watch: {
-      checkedGroup (val) {
-        this.fullData[this.deviceCode] = val
-      }
     },
     methods: {
-      getResource (item) {
-        console.log(item)
-        this.deviceCode = item
-        if (!this.fullData[this.deviceCode]) {
-          this.getDeviceVRList()
-        } else {
-          this.checkedGroup = this.fullData[this.deviceCode]
-        }
-      },
-      getDeviceVRList () {
-        let list = ['111', '112']
-        this.fullData[this.deviceCode] = list
-        this.checkedGroup = list
-      },
-      checkChange (val) {
-        console.log(val)
-      },
-      save () {
-        console.log(this.fullData)
-      },
-      tagChange (val) {
-        console.log(val)
-      }
     }
   }
 </script>
 
 <style lang="less">
   .test {
-    .device {
-      height: 20px;
-      width: 50px;
-      cursor: pointer
+    @keyframes bgp {
+      0% {background-position: 0 0}
+      100% {background-position: -100% 0}
+    }
+    .colorful {
+      background-image: linear-gradient(to right, red, orange, yellow, green, yellow, orange, red, orange, yellow, green, yellow, orange, red);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-size: 200% 100%;
+      animation: bgp 5s infinite linear;
     }
     .active {
       color: #409EFF
-    }
-    .my-tag-input {
-      margin-right: 30px;
-
     }
     .offset-test {
       .div1 {

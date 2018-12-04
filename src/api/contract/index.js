@@ -1,5 +1,3 @@
-// import 'nasa.js/dist/nasa.js'
-
 const addr = 'n1nxDvjZZsCrVYrqrw4FwMeDDcGTvZ89b6P'
 
 export default {
@@ -7,17 +5,9 @@ export default {
     return Nasa.query(addr, 'getAllItems', [params])
   },
   setItem (content) {
-    return new Promise(async (resolve, reject) => {
-      try {
-        const result = await Nasa.call(addr, 'setItem', [content])
-        console.log(result)
-        // const payId = result.payId
-        const txHash = result.txHash
-        const res = await Nasa.getTxResult(txHash)
-        resolve(res)
-      } catch (e) {
-        reject(e)
-      }
-    })
+    return Nasa.call(addr, 'setItem', [content])
+  },
+  getTxResult (txHash) {
+    return Nasa.getTxResult(txHash)
   }
 }

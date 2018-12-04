@@ -1,47 +1,63 @@
 <template>
   <div class="side-bar">
     <el-menu
-      default-active="/"
+      :default-active="$route.path"
+      :default-openeds="isOpened"
       class="el-menu-vertical-demo"
-      :router="true">
-      <el-menu-item index="/">
-        <i class="el-icon-home"></i>
-        <span slot="title">首页</span>
-      </el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item index="/album/tuanzi">团子</el-menu-item>
-        <el-menu-item index="/album/waterfall">unsplash</el-menu-item>
-        <el-menu-item index="/function/communication/parent">通信</el-menu-item>
-        <el-menu-item index="/nebulas">DAPP</el-menu-item>
-      </el-submenu>
-      <el-submenu index="3">
-        <template slot="title">
-          <i class="el-icon-share"></i>
-          <span>测试</span>
-        </template>
-        <el-menu-item index="/test">
-          <span slot="title">功能测试</span>
+      :router="true"
+      unique-opened>
+      <template v-for="item in menu">
+        <!--有1个以上子菜单的-->
+        <el-submenu v-if="item.children.length > 1" :index="item.path">
+          <template slot="title">
+            <i :class="item.icon"></i>
+            <span>{{item.title}}</span>
+          </template>
+          <el-menu-item v-for="(child, index) in item.children" :key="index" :index="child.path">
+            <span slot="title">{{child.title}}</span>
+          </el-menu-item>
+        </el-submenu>
+        <!--只有一个子菜单的-->
+        <el-menu-item v-else-if="item.children.length === 1" :index="item.children[0].path">
+          <i :class="item.icon"></i>
+          <span slot="title">{{item.title}}</span>
         </el-menu-item>
-        <el-menu-item index="/test/wmTest">
-          <span slot="title">财富测试</span>
-        </el-menu-item>
-      </el-submenu>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script>
+  import routes from '../../router/routes'
+
+  function buildMenuTree (routes, parentPath) {
+    if (!routes || !routes.length) return []
+    return routes.map((route) => {
+      if (route.meta && route.meta.show === false) return false
+      const path = parentPath ? parentPath + '/' : ''
+      return {
+        title: route.title || route.name,
+        path: path + route.path,
+        icon: (route.meta && route.meta.icon) || '',
+        children: buildMenuTree(route.children, route.path)
+      }
+    }).filter(one => one)
+  }
+
   export default {
     name: 'side-bar',
     data () {
       return {
+        menu: [],
+        isOpened: []
       }
     },
     created () {
+      this.menu = buildMenuTree(routes)
+      if (this.$route.matched.length) {
+        const parent = this.$route.matched[0]
+        this.isOpened = [parent.path || '']
+      }
     },
     mounted () {
     },
@@ -56,7 +72,8 @@
 
 <style lang="less">
   .side-bar {
-
+    width: 200px;
+    text-align: left;
   }
 
 </style>
