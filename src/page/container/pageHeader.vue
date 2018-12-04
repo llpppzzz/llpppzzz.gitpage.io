@@ -1,10 +1,10 @@
 <template>
   <div class="page-header">
     <img src="/static/images/logo.png" class="logo" @click="go('/')">
-    <div class="right-menu" @click="showSideBar = true">
-      <i class="el-icon-menu2" slot="reference"></i>
+    <div class="right-menu" @click="showBar">
+      <i class="el-icon-menu2"></i>
     </div>
-    <mob-side-bar :showSideBar.sync="showSideBar"></mob-side-bar>
+    <mob-side-bar v-if="notFirstRender" :showSideBar.sync="showSideBar"></mob-side-bar>
   </div>
 </template>
 
@@ -20,10 +20,15 @@
     data () {
       return {
         activeIndex: '',
-        showSideBar: false
+        showSideBar: false,
+        notFirstRender: false
       }
     },
     methods: {
+      showBar () {
+        this.showSideBar = true
+        this.notFirstRender = true
+      }
     }
   }
 </script>
