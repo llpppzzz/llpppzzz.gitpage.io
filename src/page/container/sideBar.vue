@@ -1,7 +1,8 @@
 <template>
   <div class="side-bar">
     <el-menu
-      :default-active="$route.name"
+      :default-active="$route.path"
+      :default-openeds="isOpened"
       class="el-menu-vertical-demo"
       :router="true"
       unique-opened>
@@ -47,11 +48,16 @@
     name: 'side-bar',
     data () {
       return {
-        menu: []
+        menu: [],
+        isOpened: []
       }
     },
     created () {
       this.menu = buildMenuTree(routes)
+      if (this.$route.matched.length) {
+        const parent = this.$route.matched[0]
+        this.isOpened = [parent.path || '']
+      }
     },
     mounted () {
     },
@@ -60,8 +66,6 @@
     watch: {
     },
     methods: {
-      buildMenuTree (routes) {
-      }
     }
   }
 </script>
