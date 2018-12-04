@@ -2,7 +2,9 @@
   <div class="main">
     <page-header></page-header>
     <div class="main-bottom">
-      <side-bar></side-bar>
+      <div class="main-side-bar">
+        <side-bar></side-bar>
+      </div>
       <div class="page-container">
         <router-view></router-view>
       </div>
@@ -50,7 +52,7 @@
           height: 50px;
         }
       }
-      .side-bar {
+      .main-side-bar {
         display: none;
       }
       .page-container {
