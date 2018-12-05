@@ -4,8 +4,9 @@
       @current-change='handleCurrentChange'
       :current-page.sync='currentPage'
       :page-size='pageSize'
+      background
+      small
       layout='prev, pager, next'
-      :small="true"
       :total='total'>
     </el-pagination>
   </div>

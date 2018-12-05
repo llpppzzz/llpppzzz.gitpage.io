@@ -46,7 +46,6 @@
       }
     },
     created () {
-      console.log(isMobile)
       if (!isMobile) {
         Nasa.ready(() => {
           // 这里是安全的执行时机，以下代码可以得到正确的结果
@@ -94,6 +93,10 @@
         this.changeStatus()
       },
       async submit () {
+        if (isMobile) {
+          this.$message.error('暂不支持移动端！')
+          return
+        }
         try {
           let result = await this.$api.contract.setItem(this.content)
           const txHash = result.txHash

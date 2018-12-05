@@ -44,7 +44,7 @@
     height: 100%;
     @media (max-width: 768px) {
       .main-bottom {
-        padding: 0;
+        padding: 50px 0 0 0;
       }
       .page-header {
         padding: 0;
@@ -61,7 +61,7 @@
     }
     @media (min-width: 768px) {
       .main-bottom {
-        padding: 0 80px;
+        padding: 80px 80px 0;
       }
       .right-menu {
         display: none;
@@ -69,7 +69,6 @@
     }
     .main-bottom {
       height: 100%;
-      //padding: 0 80px;
       display: flex;
       .side-bar {
         flex: none;
