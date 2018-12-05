@@ -35,7 +35,7 @@
 
 <style lang="less">
   .page-header {
-    position: relative;
+    position: fixed;
     z-index: 3000;
     box-shadow: 0 3px 6px 0 rgba(139,164,196,0.2);
     width: 100%;
