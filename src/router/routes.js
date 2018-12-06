@@ -61,7 +61,7 @@ export default [
   },
   {
     path: '/album',
-    title: '团子',
+    title: '图片',
     meta: {
       icon: 'el-icon-star-on'
     },
@@ -70,13 +70,13 @@ export default [
     children: [
       {
         path: 'tuanzi',
-        name: 'tuanzi',
+        name: '团子',
         component: loader('album/tuanzi/tuanzi')
       },
       {
-        path: 'waterfall',
-        name: 'waterfall',
-        component: loader('album/waterfall/waterfall')
+        path: 'unsplash',
+        name: 'unsplash',
+        component: loader('album/unsplash/unsplash')
       }
     ]
   },

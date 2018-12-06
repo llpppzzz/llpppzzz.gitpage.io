@@ -43,10 +43,7 @@
   .main {
     height: 100%;
     @media (max-width: 768px) {
-      .main-bottom {
-        padding: 50px 0 0 0;
-      }
-      .page-header {
+      .page-header > .page-header-inner {
         padding: 0;
         .logo {
           height: 50px;
@@ -56,26 +53,36 @@
         display: none;
       }
       .page-container {
+        margin: 50px 0 0 0;
+        padding: 8px;
         width: 100%;
       }
     }
     @media (min-width: 768px) {
       .main-bottom {
-        padding: 80px 80px 0;
+        padding: 0 0 0 10px;
       }
       .right-menu {
         display: none;
       }
+      .page-container {
+        padding: 24px;
+        margin: 80px 0 0 200px;
+      }
     }
     .main-bottom {
       height: 100%;
-      display: flex;
-      .side-bar {
+      max-width: 1600px;
+      margin: 0 auto;
+      .main-side-bar {
         flex: none;
+        position: fixed;
+        top: 80px;
+        bottom: 0;
       }
       .page-container {
-        flex: auto;
-        padding: 24px;
+        min-width: 320px;
+        max-width: 1440px;
       }
     }
   }
