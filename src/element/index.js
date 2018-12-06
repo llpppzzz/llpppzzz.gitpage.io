@@ -17,6 +17,10 @@ import {
   MessageBox
 } from 'element-ui'
 
+import {
+  InfiniteScroll
+} from 'mint-ui'
+
 export default {
   init () {
     Vue.use(Autocomplete)
@@ -34,5 +38,7 @@ export default {
     Vue.prototype.$msgbox = MessageBox
     Vue.prototype.$alert = MessageBox.alert
     Vue.prototype.$confirm = MessageBox.confirm
+    // mint-ui
+    Vue.use(InfiniteScroll)
   }
 }
