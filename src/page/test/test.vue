@@ -13,6 +13,9 @@
       </div>
       <div class="div2"></div>
     </div>
+    <div class="row">
+      <el-button @click="handleClick()">printRexTest</el-button>
+    </div>
   </div>
 </template>
 
@@ -74,6 +77,15 @@
     watch: {
     },
     methods: {
+      handleClick () {
+        // this.throttleFn()
+        let text = 'rrrr{{dfsdfdsf}}}'
+        let text1 = 'fff#343fdfd'
+        let rex1 = /#([^#]+)$/
+        let rex2 = /\{\{([^}]+)\}\}/
+        console.log(text.match(rex2))
+        console.log(text1.match(rex1))
+      },
     }
   }
 </script>

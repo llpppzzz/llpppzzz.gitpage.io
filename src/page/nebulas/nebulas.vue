@@ -16,8 +16,8 @@
       <my-pagination :api="getAllApi" :params="params" @list="getList"></my-pagination>
     </div>
     <div class="nebulas-bottom">
-      <el-input type="textarea" v-model="content" resize="none"></el-input>
-      <el-button size="mini" @click="submit()">提交</el-button>
+      <el-input v-model="content" size="mini" @onfocus="focusInput"></el-input>
+      <el-button size="mini" type="primary" @click="submit()">提交</el-button>
     </div>
   </div>
 </template>
@@ -74,6 +74,10 @@
     watch: {
     },
     methods: {
+      focusInput () {
+        if (!isMobile) return
+
+      },
       changeStatus () {
         this.loading = true
         this.params = {
