@@ -1,9 +1,8 @@
-import Vue from 'vue'
 import normal from './normal'
 import date from './date'
 
 export default {
-  init () {
+  init (app) {
     const filters = Object.assign(
       {},
       normal,
@@ -11,7 +10,7 @@ export default {
     )
 
     Object.keys(filters).forEach(key => {
-      Vue.filter(key, filters[key])
+      app.filter(key, filters[key])
     })
   }
 }

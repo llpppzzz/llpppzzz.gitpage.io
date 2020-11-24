@@ -1,44 +1,50 @@
-import Vue from 'vue'
 import './theme/index.scss'
 
 import {
-  Autocomplete,
-  Input,
-  Button,
-  Menu,
-  MenuItem,
-  Submenu,
-  Table,
-  TableColumn,
-  Pagination,
-  Popover,
-  Loading,
-  Message,
-  MessageBox
-} from 'element-ui'
+  ElAutocomplete,
+  ElInput,
+  ElButton,
+  ElMenu,
+  ElMenuItem,
+  ElSubmenu,
+  ElTable,
+  ElTableColumn,
+  ElPagination,
+  ElPopover,
+  ElLoading,
+  ElInfiniteScroll,
+  ElMessage,
+  ElMessageBox
+} from 'element-plus'
 
-import {
-  InfiniteScroll
-} from 'mint-ui'
+const components = [
+  ElAutocomplete,
+  ElInput,
+  ElButton,
+  ElMenu,
+  ElMenuItem,
+  ElSubmenu,
+  ElTable,
+  ElTableColumn,
+  ElPagination,
+  ElPopover,
+  ElLoading
+]
+
+const plugins = [
+  ElInfiniteScroll,
+  ElMessage,
+  ElMessageBox
+]
 
 export default {
-  init () {
-    Vue.use(Autocomplete)
-    Vue.use(Input)
-    Vue.use(Button)
-    Vue.use(Menu)
-    Vue.use(MenuItem)
-    Vue.use(Submenu)
-    Vue.use(Table)
-    Vue.use(TableColumn)
-    Vue.use(Pagination)
-    Vue.use(Popover)
-    Vue.use(Loading.directive)
-    Vue.prototype.$message = Message
-    Vue.prototype.$msgbox = MessageBox
-    Vue.prototype.$alert = MessageBox.alert
-    Vue.prototype.$confirm = MessageBox.confirm
-    // mint-ui
-    Vue.use(InfiniteScroll)
+  init (app) {
+    components.forEach(component => {
+      app.use(component)
+    })
+
+    plugins.forEach(plugin => {
+      app.use(plugin)
+    })
   }
 }

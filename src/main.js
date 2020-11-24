@@ -1,7 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import 'babel-polyfill'
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -12,14 +12,16 @@ import components from './components'
 import api from './api/install'
 import '../static/lib/animate.css'
 
-Vue.use(api)
-filters.init()
-directives.init()
-components.init()
-elementUI.init()
+const app = createApp(App)
+
+app.use(api)
+filters.init(app)
+directives.init(app)
+components.init(app)
+elementUI.init(app)
 
 /* eslint-disable no-new */
-new Vue({
+app.mount({
   el: '#app',
   router,
   store,
