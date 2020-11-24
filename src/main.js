@@ -13,7 +13,6 @@ import api from './api/install'
 import '../static/lib/animate.css'
 
 Vue.use(api)
-Vue.config.productionTip = false
 filters.init()
 directives.init()
 components.init()
