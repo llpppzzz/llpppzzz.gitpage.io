@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import installElementPlus from './plugins/element'
 
-installElementPlus(App)
+const app: ReturnType<typeof createApp> = createApp(App)
 
-createApp(App).use(store).use(router).mount('#app')
+installElementPlus(app)
+
+app.use(store).use(router).mount('#app')

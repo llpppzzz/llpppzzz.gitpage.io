@@ -1,9 +1,9 @@
 import { ElButton } from 'element-plus'
 import lang from 'element-plus/lib/locale/lang/zh-cn'
 import locale from 'element-plus/lib/locale'
-import { DefineComponent } from 'vue'
+import { createApp } from 'vue'
 
-export default (app: DefineComponent) => {
+export default (app: ReturnType<typeof createApp>) => {
   locale.use(lang)
-  app.use(ElButton)
+  app.use(ElButton as any)
 }
