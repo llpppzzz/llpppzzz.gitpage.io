@@ -1,4 +1,4 @@
-# hello-world
+# vue3-ts-demo
 
 ## Project setup
 ```
