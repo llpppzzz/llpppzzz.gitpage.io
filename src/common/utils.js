@@ -137,3 +137,18 @@ export function throttle (func, wait, options = {}) {
     return result
   }
 }
+
+/**
+ * 判断一个对象是否空的
+ * @param obj
+ * @param [excludeInherited=true] 是否排除非原型属性
+ * @returns {boolean}
+ */
+export function isEmpty (obj, excludeInherited) {
+  if (!obj || !isObject(obj)) { return true }
+  excludeInherited = excludeInherited !== false
+  for (var key in obj) {
+    if ((excludeInherited && obj.hasOwnProperty(key)) || !excludeInherited) { return false }
+  }
+  return true
+}
